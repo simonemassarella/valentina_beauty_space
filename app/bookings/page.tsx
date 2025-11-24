@@ -1,7 +1,7 @@
 'use client';
 
 import { useSearchParams } from 'next/navigation';
-import { FormEvent, useEffect, useMemo, useState } from 'react';
+import { FormEvent, Suspense, useEffect, useMemo, useState } from 'react';
 
 interface Service {
   id: string;
@@ -48,7 +48,7 @@ function formatDate(dateStr: string) {
   });
 }
 
-export default function BookingsPage() {
+function BookingsPageInner() {
   const searchParams = useSearchParams();
   const [services, setServices] = useState<Service[]>([]);
   const [operators, setOperators] = useState<Operator[]>([]);
@@ -404,5 +404,13 @@ export default function BookingsPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function BookingsPage() {
+  return (
+    <Suspense fallback={<p className="mt-4 text-muted">Caricamento pagina prenotazioni...</p>}>
+      <BookingsPageInner />
+    </Suspense>
   );
 }
