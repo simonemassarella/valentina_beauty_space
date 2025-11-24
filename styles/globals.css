@@ -1,0 +1,45 @@
+body {
+  background-color: #f7f3f5;
+}
+
+.main-bg-gradient {
+  background: radial-gradient(circle at top left, #ffd6e8 0, #f7f3f5 40%, #ffffff 100%);
+}
+
+.hero-section {
+  min-height: 70vh;
+}
+
+.navbar-brand span {
+  letter-spacing: 0.08em;
+}
+
+.card-soft {
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.badge-soft {
+  background-color: rgba(214, 162, 191, 0.15);
+  color: #b25f8a;
+}
+
+.btn-primary {
+  background-color: #b25f8a;
+  border-color: #b25f8a;
+}
+
+.btn-primary:hover {
+  background-color: #9b4f76;
+  border-color: #9b4f76;
+}
+
+.btn-outline-primary {
+  color: #b25f8a;
+  border-color: #b25f8a;
+}
+
+.btn-outline-primary:hover {
+  background-color: #b25f8a;
+  border-color: #b25f8a;
+}

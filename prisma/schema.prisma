@@ -1,0 +1,69 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String    @id @default(cuid())
+  name         String
+  surname      String
+  email        String    @unique
+  phone        String
+  passwordHash String
+  role         String    @default("CLIENT")
+  bookings     Booking[]
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+}
+
+model Operator {
+  id        String    @id @default(cuid())
+  name      String
+  startHour Int       @default(9)   // ora di inizio lavoro (0-23)
+  endHour   Int       @default(18)  // ora di fine lavoro (0-23)
+  bookings  Booking[]
+  services  Service[] @relation("OperatorServices")
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Service {
+  id        String    @id @default(cuid())
+  name      String
+  category  String?
+  description String?
+  imageUrl   String?
+  duration  Int       // minuti
+  price     Float
+  active    Boolean   @default(true)
+  bookings  Booking[]
+   operators Operator[] @relation("OperatorServices")
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Booking {
+  id          String        @id @default(cuid())
+  user        User          @relation(fields: [userId], references: [id])
+  userId      String
+  operator    Operator      @relation(fields: [operatorId], references: [id])
+  operatorId  String
+  service     Service       @relation(fields: [serviceId], references: [id])
+  serviceId   String
+  start       DateTime
+  end         DateTime
+  status      String        @default("CONFIRMED")
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+}
+
+model Settings {
+  id                     Int      @id @default(1)
+  sendWhatsAppReminders  Boolean  @default(true)
+  reminderHour           Int      @default(8) // 8:00
+  timezone               String   @default("Europe/Rome")
+}
