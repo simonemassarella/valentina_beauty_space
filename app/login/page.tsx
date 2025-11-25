@@ -1,16 +1,56 @@
 'use client';
 
-import { FormEvent, Suspense, useState } from 'react';
-import { signIn } from 'next-auth/react';
+import { FormEvent, Suspense, useEffect, useState } from 'react';
+import { signIn, useSession } from 'next-auth/react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 function LoginPageInner() {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const { status } = useSession();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  if (status === 'loading') {
+    return (
+      <div className="row justify-content-center mt-4">
+        <div className="col-md-6 col-lg-5">
+          <p className="text-muted">Caricamento pagina di accesso...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (status === 'authenticated') {
+    return (
+      <div className="row justify-content-center mt-4">
+        <div className="col-md-6 col-lg-5">
+          <div className="card card-soft border-0 p-4 p-lg-5 bg-white">
+            <h1 className="h3 mb-3">Sei già autenticato</h1>
+            <p className="text-muted mb-4">
+              Hai già effettuato l&apos;accesso alla tua area clienti.
+            </p>
+            <button
+              type="button"
+              className="btn btn-primary w-100 mb-2"
+              onClick={() => router.push('/dashboard')}
+            >
+              Vai alla dashboard
+            </button>
+            <button
+              type="button"
+              className="btn btn-link w-100"
+              onClick={() => router.back()}
+            >
+              Torna indietro
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   const registered = searchParams.get('registered') === '1';
 
@@ -85,6 +125,13 @@ function LoginPageInner() {
             </div>
             <button type="submit" className="btn btn-primary w-100" disabled={loading}>
               {loading ? 'Accesso in corso...' : 'Accedi'}
+            </button>
+            <button
+              type="button"
+              className="btn btn-link w-100 mt-2"
+              onClick={() => router.back()}
+            >
+              Torna indietro
             </button>
           </form>
         </div>

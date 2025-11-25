@@ -1,6 +1,7 @@
 'use client';
 
 import { FormEvent, useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 interface ProfileResponse {
   name: string;
@@ -10,6 +11,7 @@ interface ProfileResponse {
 }
 
 export default function ProfilePage() {
+  const router = useRouter();
   const [profile, setProfile] = useState<ProfileResponse | null>(null);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -143,6 +145,13 @@ export default function ProfilePage() {
 
             <button type="submit" className="btn btn-primary w-100 mt-4" disabled={saving}>
               {saving ? 'Salvataggio in corso...' : 'Salva modifiche'}
+            </button>
+            <button
+              type="button"
+              className="btn btn-link w-100 mt-2"
+              onClick={() => router.back()}
+            >
+              Torna indietro
             </button>
           </form>
         </div>

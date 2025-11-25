@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { z } from 'zod';
 import { prisma } from '@/lib/prisma';
 import { hash } from 'bcryptjs';
+import { mailer } from '@/lib/mailer';
 
 const registerSchema = z.object({
   name: z.string().min(1),
@@ -42,6 +43,28 @@ export async function POST(req: Request) {
         role,
       },
     });
+
+    if (process.env.NOTIFY_GMAIL_USER) {
+      try {
+        const baseUrl = process.env.NEXTAUTH_URL ?? 'http://localhost:3000';
+        const areaClientiUrl = `${baseUrl}/dashboard`;
+
+        await mailer.sendMail({
+          from: process.env.NOTIFY_GMAIL_USER,
+          to: email,
+          subject: 'Benvenuto nell\'area clienti - Centro Estetico Valentina',
+          text:
+            `Ciao ${name} ${surname},\n\n` +
+            'il tuo account per l\'area clienti del Centro Estetico Valentina è stato creato correttamente.\n' +
+            'Ora puoi accedere per gestire le tue prenotazioni e il tuo profilo.\n\n' +
+            'Puoi entrare subito nella tua area clienti da qui:\n' +
+            `${areaClientiUrl}\n\n` +
+            'A presto,\nCentro Estetico Valentina',
+        });
+      } catch (mailError) {
+        console.error('Errore nell\'invio della mail di benvenuto', mailError);
+      }
+    }
 
     return NextResponse.json({ success: true });
   } catch (error) {
