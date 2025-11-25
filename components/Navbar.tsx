@@ -30,7 +30,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+    <nav className="navbar navbar-expand-lg navbar-light main-navbar sticky-top">
       <div className="container">
         <Link className="navbar-brand d-flex align-items-center" href="/">
           <Image
@@ -54,7 +54,7 @@ export default function Navbar() {
         </button>
 
         <div className={`collapse navbar-collapse ${expanded ? 'show' : ''}`} id="mainNavbar">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+          <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
             {isAdmin ? (
               <>
                 <NavLink href="/admin/dashboard" label="Dashboard" onClick={handleNavClick} />

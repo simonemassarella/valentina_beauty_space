@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '@/styles/globals.css';
 import AuthProvider from '@/components/SessionProvider';
 import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: 'Centro Estetico Valentina',
@@ -20,6 +21,7 @@ export default function RootLayout({
         <AuthProvider>
           <Navbar />
           <main className="container py-4">{children}</main>
+          <Footer />
         </AuthProvider>
       </body>
     </html>

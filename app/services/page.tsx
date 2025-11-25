@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 
 type TabKey = "estetici" | "olistici" | "pacchetti";
@@ -109,8 +110,29 @@ export default function ServicesPage() {
 
   return (
     <div className="mt-4">
-      <h1 className="h3 mb-1">{informazioniSalone.nome}</h1>
-      <p className="text-muted mb-3">{informazioniSalone.listino}</p>
+      <div className="row g-4 align-items-center mb-4">
+        <div className="col-lg-6">
+          <h1 className="h3 mb-1">{informazioniSalone.nome}</h1>
+          <p className="text-muted mb-3">{informazioniSalone.listino}</p>
+          <p className="text-muted small mb-0">
+            Una selezione di trattamenti viso, corpo e massaggi olistici pensati per accompagnarti in
+            ogni momento dell&apos;anno. Puoi prenotare online o contattarci per percorsi personalizzati.
+          </p>
+        </div>
+        <div className="col-lg-6">
+          <div className="card card-soft border-0 p-0 overflow-hidden">
+            <Image
+              src="https://images.pexels.com/photos/3738371/pexels-photo-3738371.jpeg?auto=compress&cs=tinysrgb&w=1200"
+              alt="Donne sorridenti in un centro estetico"
+              width={900}
+              height={600}
+              className="img-fluid w-100"
+              style={{ objectFit: "cover", maxHeight: "260px" }}
+              priority
+            />
+          </div>
+        </div>
+      </div>
 
       <p className="text-muted small mb-4">
         Qui trovi il listino completo dei trattamenti estetici e olistici. Per prenotare usa la sezione
