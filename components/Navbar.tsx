@@ -64,8 +64,13 @@ export default function Navbar() {
             ) : (
               <>
                 <NavLink href="/" label="Home" onClick={handleNavClick} />
+                <NavLink href="/about" label="Chi siamo" onClick={handleNavClick} />
                 <NavLink href="/services" label="Servizi" onClick={handleNavClick} />
-                <NavLink href="/bookings" label="Prenota" onClick={handleNavClick} />
+                <NavLink
+                  href="/bookings"
+                  label="Prenota un trattamento"
+                  onClick={handleNavClick}
+                />
                 <NavLink href="/dashboard" label="Area Clienti" onClick={handleNavClick} />
               </>
             )}
