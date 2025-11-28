@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { signOut, useSession } from 'next-auth/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function NavLink({ href, label, onClick }: { href: string; label: string; onClick?: () => void }) {
   const pathname = usePathname();
@@ -24,13 +24,37 @@ export default function Navbar() {
   const [expanded, setExpanded] = useState(false);
 
   const isAdmin = (session?.user as any)?.role === 'ADMIN';
+  const pathname = usePathname();
+  const isHome = pathname === '/';
+
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+
+    handleScroll();
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleNavClick = () => {
     setExpanded(false);
   };
 
+  const navbarVariantClass = isAdmin
+    ? ''
+    : isHome
+    ? isScrolled
+      ? 'main-navbar-scrolled'
+      : 'main-navbar-home'
+    : 'main-navbar-scrolled';
+
   return (
-    <nav className="navbar navbar-expand-lg navbar-light main-navbar sticky-top">
+    <nav
+      className={`navbar navbar-expand-lg navbar-light main-navbar sticky-top ${navbarVariantClass}`}
+    >
       <div className="container">
         <Link className="navbar-brand d-flex align-items-center" href="/">
           <Image
@@ -65,12 +89,8 @@ export default function Navbar() {
               <>
                 <NavLink href="/" label="Home" onClick={handleNavClick} />
                 <NavLink href="/about" label="Chi siamo" onClick={handleNavClick} />
-                <NavLink href="/services" label="Servizi" onClick={handleNavClick} />
-                <NavLink
-                  href="/bookings"
-                  label="Prenota un trattamento"
-                  onClick={handleNavClick}
-                />
+                <NavLink href="/esperienze" label="Servizi" onClick={handleNavClick} />
+                <NavLink href="/bookings" label="Prenota" onClick={handleNavClick} />
                 <NavLink href="/dashboard" label="Area Clienti" onClick={handleNavClick} />
               </>
             )}

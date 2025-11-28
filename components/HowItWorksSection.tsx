@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default function HowItWorksSection() {
   return (
-    <section className=" home-section-alt reveal-on-scroll">
+    <section className="home-section-alt reveal-on-scroll">
       <div className="card come-funziona-card border-0 p-4 p-lg-5">
         <div className="row g-4 align-items-center">
           <div className="col-lg-5 reveal-on-scroll" data-reveal-order="1">

@@ -128,12 +128,12 @@ export default function ServicesPage() {
     "https://images.pexels.com/photos/3738371/pexels-photo-3738371.jpeg?auto=compress&cs=tinysrgb&w=1200";
 
   return (
-    <div className="services-page">
-      <section className="card-soft services-hero mb-4">
+    <div className="services-page page-animated">
+      <section className="card-soft services-hero mb-4 reveal-on-scroll" data-reveal-order="1">
         <div className="row g-4 align-items-center">
           <div className="col-lg-6">
             <span className="badge badge-soft services-hero-kicker mb-3">Servizi</span>
-            <h1 className="display-5 fw-semibold mb-2">
+            <h1 className="home-section-title mb-2">
               Trattamenti & percorsi
               <br />
               per il tuo benessere.
@@ -167,7 +167,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="services-grid">
+      <section className="services-grid reveal-on-scroll" data-reveal-order="2">
         <div className="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3 mb-3">
           <div className="services-grid-intro">
             <h2 className="h4 mb-1">{informazioniSalone.listino}</h2>
@@ -414,7 +414,10 @@ export default function ServicesPage() {
         )}
       </section>
 
-      <section className="card-soft services-cta-banner mt-5 mb-4">
+      <section
+        className="card-soft services-cta-banner mt-5 mb-4 reveal-on-scroll"
+        data-reveal-order="3"
+      >
         <div className="row align-items-center g-3">
           <div className="col-lg-8">
             <h2 className="h4 mb-2">Pronta a riconnetterti con te stessa?</h2>
@@ -436,7 +439,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section id="note-importanti" className="mt-5">
+      <section id="note-importanti" className="mt-5 reveal-on-scroll" data-reveal-order="4">
         <div className="card card-soft border-0 p-3 bg-white">
           <h2 className="h6 mb-2">Note importanti</h2>
           <ul className="small mb-0">

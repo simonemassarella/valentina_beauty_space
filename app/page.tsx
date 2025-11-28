@@ -1,4 +1,4 @@
- import HeroSection from '@/components/HeroSection';
+import HeroSection from '@/components/HeroSection';
 import WhyChooseSection from '@/components/WhyChooseSection';
 import StatsSection from '@/components/StatsSection';
 import HowItWorksSection from '@/components/HowItWorksSection';
@@ -12,8 +12,8 @@ export default function HomePage() {
       <HeroSection />
       <WhyChooseSection />
       <StatsSection />
-      <HowItWorksSection />
       <PackagesSection />
+      <HowItWorksSection />
       <CtaBannerSection />
       <TestimonialsContactsSection />
     </>

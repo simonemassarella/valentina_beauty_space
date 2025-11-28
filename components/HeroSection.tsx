@@ -3,70 +3,67 @@ import Link from 'next/link';
 
 export default function HeroSection() {
   return (
-    <div className="hero-section">
-      <div
-        className="home-hero-card row w-100 g-4 align-items-center reveal-on-scroll"
-        data-reveal-order="1"
-      >
-        <div className="col-lg-7 order-lg-1 order-1">
-          <span className="badge badge-soft home-hero-kicker mb-3">Beauty Space</span>
-          <h1 className="display-4 fw-semibold mb-3 home-hero-title">
-            Prenota il tuo
-            <br />
-            <span className="home-hero-highlight">momento di relax</span>
-          </h1>
-          <p className="text-muted mb-2 home-hero-subtitle">
-            Un luogo intimo e accogliente dove ritrovare equilibrio, luce e benessere.
-          </p>
-          <p className="text-muted mb-4">
-            <span className="fw-semibold">
-              Prenota online in pochi istanti e lasciati guidare dalle nostre operatrici.
-            </span>
-          </p>
-          <div className="d-flex flex-wrap gap-2 mb-3">
-            <Link href="/bookings" className="btn btn-primary btn-lg">
-              Prenota un trattamento
-            </Link>
-            <Link href="/services" className="btn btn-outline-primary btn-lg">
-              Scopri i servizi
-            </Link>
-          </div>
-          <div className="home-hero-brands">
-            <Image
-              src="/endospheres-logo.svg"
-              alt="Logo Endospheres"
-              width={320}
-              height={92}
-              className="home-hero-brand-logo"
-            />
-            <span className="home-hero-brand-separator" aria-hidden="true" />
-            <Image
-              src="/pagodil-logo.svg"
-              alt="Logo PagoDIL"
-              width={320}
-              height={92}
-              className="home-hero-brand-logo"
-            />
-          </div>
-        </div>
-        <div className="col-lg-5 order-lg-2 order-2">
-          <div className="hero-illustration mx-auto">
-            <div
-              className="hero-illustration-inner reveal-on-scroll"
-              data-reveal-order="2"
-            >
+    <section className="hero-section hero-section-full position-relative text-white">
+      <div className="hero-section-background" aria-hidden="true">
+        <Image
+          src="/Background.svg"
+          alt="Sfondo con foglie verdi"
+          fill
+          priority
+          sizes="100vw"
+          className="hero-section-background-image"
+        />
+        <div className="hero-section-background-overlay" />
+      </div>
+
+      <div className="container hero-section-inner">
+        <div className="row justify-content-center">
+          <div className="col-12">
+            <h1 className="hero-section-title mb-4">Prenota il tuo momento di Relax</h1>
+
+            <div className="hero-section-text mb-4">
+              <p className="hero-section-text-muted text-xl mb-1">
+                Prenota online in pochi istanti e lasciati guidare dalle nostre operatrici.
+              </p>
+              <p className="hero-section-text-muted mb-0">
+                Un luogo intimo e accogliente dove ritrovare equilibrio, luce e benessere.
+              </p>
+            </div>
+
+            <div className="hero-section-actions d-flex flex-wrap align-items-center gap-3 mb-5">
+              <Link href="/bookings" className="btn hero-btn-primary">
+                <span>Prenota ora</span>
+                <span className="hero-btn-icon" aria-hidden="true">																																															
+                  →
+                </span>
+              </Link>
+              <Link href="/services" className="btn hero-btn-secondary">
+                <span>Scopri i nostri servizi</span>
+                <span className="hero-btn-icon" aria-hidden="true">
+                  →
+                </span>
+              </Link>
+            </div>
+
+            <div className="hero-section-brands d-flex flex-wrap align-items-center gap-4">
               <Image
-                src="/hero-illustration.svg"
-                alt="Illustrazione lineare di volto femminile e fiori"
-                width={480}
-                height={480}
-                className="img-fluid"
-                priority
+                src="/endospheres-logo.svg"
+                alt="Logo Endospheres"
+                width={160}
+                height={46}
+                className="hero-brand-logo"
+              />
+              <Image
+                src="/pagodil-logo.svg"
+                alt="Logo PagoDIL"
+                width={150}
+                height={46}
+                className="hero-brand-logo"
               />
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

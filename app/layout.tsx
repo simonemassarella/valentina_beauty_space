@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Sora } from 'next/font/google';
+import { Sora, Fraunces } from 'next/font/google';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@/styles/globals.css';
 import AuthProvider from '@/components/SessionProvider';
@@ -10,6 +10,12 @@ import ScrollRevealProvider from '@/components/ScrollRevealProvider';
 const sora = Sora({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700'],
+});
+
+const fraunces = Fraunces({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-fraunces',
 });
 
 export const metadata: Metadata = {
@@ -23,7 +29,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="it">
+    <html lang="it" className={fraunces.variable}>
       <body className={`main-bg-gradient ${sora.className}`}>
         <AuthProvider>
           <ScrollRevealProvider>
