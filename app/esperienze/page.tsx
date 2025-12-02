@@ -77,8 +77,9 @@ export default function EsperienzePage() {
                 costruire un percorso completo.
               </p>
               <div className="d-flex flex-wrap gap-2">
-                <Link href="/bookings" className="btn btn-primary btn-lg">
+                <Link href="/bookings" className="btn btn-primary btn-lg d-flex align-items-center gap-1">
                   Prenota ora
+                  <span className="hero-btn-icon" aria-hidden="true">→</span>
                 </Link>
                 <Link href="/services" className="btn btn-outline-primary btn-lg">
                   Vai al listino completo

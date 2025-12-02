@@ -6,13 +6,22 @@ import { usePathname } from 'next/navigation';
 import { signOut, useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 
-function NavLink({ href, label, onClick }: { href: string; label: string; onClick?: () => void }) {
+function NavLink({ href, label, onClick, isPrimary = false }: { 
+  href: string; 
+  label: string; 
+  onClick?: () => void;
+  isPrimary?: boolean;
+}) {
   const pathname = usePathname();
   const isActive = pathname === href;
 
   return (
     <li className="nav-item">
-      <Link className={`nav-link ${isActive ? 'active' : ''}`} href={href} onClick={onClick}>
+      <Link 
+        className={`nav-link ${isActive ? 'active' : ''} ${isPrimary ? 'btn btn-primary text-white px-3' : ''}`} 
+        href={href} 
+        onClick={onClick}
+      >
         {label}
       </Link>
     </li>
@@ -79,26 +88,21 @@ export default function Navbar() {
 
         <div className={`collapse navbar-collapse ${expanded ? 'show' : ''}`} id="mainNavbar">
           <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
+            <NavLink href="/" label="Home" onClick={handleNavClick} />
+            <NavLink href="/about" label="Chi siamo" onClick={handleNavClick} />
+            <NavLink href="/esperienze" label="Servizi" onClick={handleNavClick} />
+          </ul>
+
+          <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
             {isAdmin ? (
               <>
                 <NavLink href="/admin/dashboard" label="Dashboard" onClick={handleNavClick} />
                 <NavLink href="/admin/bookings" label="Prenotazioni" onClick={handleNavClick} />
                 <NavLink href="/admin/services" label="Servizi" onClick={handleNavClick} />
               </>
-            ) : (
+            ) : session ? (
               <>
-                <NavLink href="/" label="Home" onClick={handleNavClick} />
-                <NavLink href="/about" label="Chi siamo" onClick={handleNavClick} />
-                <NavLink href="/esperienze" label="Servizi" onClick={handleNavClick} />
-                <NavLink href="/bookings" label="Prenota" onClick={handleNavClick} />
                 <NavLink href="/dashboard" label="Area Clienti" onClick={handleNavClick} />
-              </>
-            )}
-          </ul>
-
-          <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-            {session ? (
-              <>
                 <li className="nav-item d-flex align-items-center me-3">
                   <div className="d-flex flex-column text-end">
                     <span className="text-muted small">
@@ -126,14 +130,10 @@ export default function Navbar() {
               </>
             ) : (
               <>
-                <li className="nav-item me-2">
-                  <Link href="/login" className="btn btn-outline-primary btn-sm">
-                    Accedi
-                  </Link>
-                </li>
                 <li className="nav-item">
-                  <Link href="/register" className="btn btn-primary btn-sm">
-                    Registrati
+                  <Link href="/bookings" className="hero-btn-primary text-decoration-none">
+                    <span>Prenota ora</span>
+                    <span className="hero-btn-icon" aria-hidden="true">→</span>
                   </Link>
                 </li>
               </>
