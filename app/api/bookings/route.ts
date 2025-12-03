@@ -164,22 +164,21 @@ export async function POST(req: Request) {
 
   const { operatorId, serviceId, date, time } = parsed.data;
 
-  const service = await prisma.service.findUnique({ where: { id: serviceId } });
-  const operator = await prisma.operator.findUnique({ where: { id: operatorId } });
-  const user = await prisma.user.findUnique({ where: { id: session.user.id } });
+const service = await prisma.service.findUnique({ where: { id: serviceId } });
+const operator = await prisma.operator.findUnique({ where: { id: operatorId } });
+const user = await prisma.user.findUnique({ where: { id: session.user.id } });
 
-  console.log('BOOKING_DEBUG', {
-    operatorId,
-    serviceId,
-    userId: session.user.id,
-    hasService: !!service,
-    hasOperator: !!operator,
-    hasUser: !!user,
-  });
+if (!service) {
+  return NextResponse.json({ message: 'Servizio non trovato (ambiente di produzione)' }, { status: 404 });
+}
 
-  if (!service || !operator || !user) {
-    return NextResponse.json({ message: 'Servizio, operatore o utente non trovato' }, { status: 404 });
-  }
+if (!operator) {
+  return NextResponse.json({ message: 'Operatrice non trovata (ambiente di produzione)' }, { status: 404 });
+}
+
+if (!user) {
+  return NextResponse.json({ message: 'Utente non trovato nel database (contatta il supporto)' }, { status: 404 });
+}
 
   const start = new Date(`${date}T${time}:00`);
   const end = new Date(start.getTime() + service.duration * 60 * 1000);
