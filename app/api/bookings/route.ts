@@ -168,6 +168,15 @@ export async function POST(req: Request) {
   const operator = await prisma.operator.findUnique({ where: { id: operatorId } });
   const user = await prisma.user.findUnique({ where: { id: session.user.id } });
 
+  console.log('BOOKING_DEBUG', {
+    operatorId,
+    serviceId,
+    userId: session.user.id,
+    hasService: !!service,
+    hasOperator: !!operator,
+    hasUser: !!user,
+  });
+
   if (!service || !operator || !user) {
     return NextResponse.json({ message: 'Servizio, operatore o utente non trovato' }, { status: 404 });
   }
@@ -271,12 +280,12 @@ export async function POST(req: Request) {
         text: `Ciao ${user.name} ${user.surname},\n\nla tua prenotazione è confermata.\n\nDettagli:\n- Servizio: ${booking.service.name}\n- Operatrice: ${booking.operator.name}\n- Data: ${dateStr}\n- Ora: ${timeStr}\n\nPuoi aggiungere l'appuntamento al tuo calendario aprendo l'allegato.\n\nSe non puoi venire, puoi annullare la prenotazione dalla tua area clienti.\n\nA presto,\nCentro Estetico Valentina`,
         attachments: icsContent
           ? [
-              {
-                filename: 'prenotazione.ics',
-                content: icsContent,
-                contentType: 'text/calendar; charset=utf-8',
-              },
-            ]
+            {
+              filename: 'prenotazione.ics',
+              content: icsContent,
+              contentType: 'text/calendar; charset=utf-8',
+            },
+          ]
           : undefined,
       });
     } catch (error) {
