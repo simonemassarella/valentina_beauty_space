@@ -9,6 +9,34 @@ export const authOptions: NextAuthOptions = {
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+      async profile(profile) {
+        // Try to find existing user
+        let user = await prisma.user.findUnique({
+          where: { email: profile.email },
+        });
+
+        // If user doesn't exist, create a new one
+        if (!user) {
+          const names = profile.name?.split(' ') || ['', ''];
+          user = await prisma.user.create({
+            data: {
+              email: profile.email,
+              name: names[0] || '',
+              surname: names.slice(1).join(' ') || '',
+              role: 'USER',
+              passwordHash: '', // No password for Google users
+              phone: '', // Phone required but empty for Google users
+            },
+          });
+        }
+
+        return {
+          id: user.id,
+          email: user.email,
+          name: `${user.name} ${user.surname}`,
+          role: user.role,
+        } as any;
+      },
     }),
     CredentialsProvider({
       name: 'Credenziali',

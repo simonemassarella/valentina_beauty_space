@@ -1,6 +1,7 @@
 'use client';
 
 import { useSearchParams } from 'next/navigation';
+import { useSession, signIn } from 'next-auth/react';
 import { FormEvent, Suspense, useEffect, useMemo, useState } from 'react';
 
 interface Service {
@@ -49,6 +50,7 @@ function formatDate(dateStr: string) {
 }
 
 function BookingsPageInner() {
+  const { data: session, status } = useSession();
   const searchParams = useSearchParams();
   const [services, setServices] = useState<Service[]>([]);
   const [operators, setOperators] = useState<Operator[]>([]);
@@ -64,6 +66,25 @@ function BookingsPageInner() {
   const [loadingSlots, setLoadingSlots] = useState(false);
   const [creating, setCreating] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  // Controllo autenticazione
+  if (status === 'loading') {
+    return <p className="mt-4 text-muted">Caricamento...</p>;
+  }
+  
+  if (!session) {
+    return (
+      <div className="mt-4 text-center">
+        <p className="mb-4 text-muted">Devi essere loggato per visualizzare e creare prenotazioni.</p>
+        <button 
+          onClick={() => signIn('google')}
+          className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+        >
+          Accedi con Google
+        </button>
+      </div>
+    );
+  }
 
   useEffect(() => {
     const load = async () => {
