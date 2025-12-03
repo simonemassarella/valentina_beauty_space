@@ -13,6 +13,14 @@ const nextConfig = {
       },
     ],
   },
+  async rewrites() {
+    return [
+      {
+        source: '/api/bookings',
+        destination: '/api/bookings',
+      },
+    ];
+  },
 };
 
 export default nextConfig;

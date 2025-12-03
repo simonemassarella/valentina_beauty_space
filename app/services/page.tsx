@@ -173,7 +173,7 @@ export default function ServicesPage() {
             <h2 className="h4 mb-1">{informazioniSalone.listino}</h2>
             <p className="text-muted mb-0">
               Qui trovi il listino completo dei trattamenti estetici e olistici. Per prenotare usa la sezione
-              <span className="fw-semibold"> Prenota</span> o parla direttamente con il centro per valutazioni
+              <span className="fw-semibold"> Prenota ora</span> o parla direttamente con il centro per valutazioni
               personalizzate.
             </p>
           </div>
