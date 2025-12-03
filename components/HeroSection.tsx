@@ -18,7 +18,7 @@ export default function HeroSection() {
 
       <div className="container hero-section-inner">
         <div className="row justify-content-center">
-          <div className="col-12">
+          <div className="col-12 col-lg-8">
             <h1 className="hero-section-title mb-4">Prenota il tuo momento di Relax</h1>
 
             <div className="hero-section-text mb-4">
@@ -31,13 +31,13 @@ export default function HeroSection() {
             </div>
 
             <div className="hero-section-actions d-flex flex-wrap align-items-center gap-3 mb-5">
-              <Link href="/bookings" className="btn hero-btn-primary">
+              <Link href="/bookings" className="btn hero-btn-primary hero-cta-btn">
                 <span>Prenota ora</span>
-                <span className="hero-btn-icon" aria-hidden="true">																																															
+                <span className="hero-btn-icon" aria-hidden="true">
                   →
                 </span>
               </Link>
-              <Link href="/services" className="btn hero-btn-secondary">
+              <Link href="/services" className="btn hero-btn-secondary hero-cta-btn">
                 <span>Scopri i nostri servizi</span>
                 <span className="hero-btn-icon" aria-hidden="true">
                   →
