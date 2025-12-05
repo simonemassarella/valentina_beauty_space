@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { sendPasswordResetEmail } from '@/lib/email';
 import crypto from 'crypto';
+import { PrismaClient } from '@prisma/client';
 
-// Database temporaneo per token - in produzione usare tabella dedicata
-const resetTokens = new Map<string, { email: string; expires: Date }>();
+const prisma = new PrismaClient();
 
 export async function POST(request: NextRequest) {
   try {
@@ -20,15 +20,18 @@ export async function POST(request: NextRequest) {
     const resetToken = crypto.randomBytes(32).toString('hex');
     const expires = new Date(Date.now() + 3600000); // 1 ora
 
-    // Salva token (in produzione: database)
-    resetTokens.set(resetToken, { email, expires });
+    // Salva token in database (SQL diretto)
+    await prisma.$executeRawUnsafe(
+      'INSERT INTO "PasswordResetToken" (token, email, "expiresAt") VALUES ($1, $2, $3)',
+      resetToken,
+      email,
+      expires
+    );
 
-    // Pulisci token scaduti
-    for (const [token, data] of resetTokens.entries()) {
-      if (data.expires < new Date()) {
-        resetTokens.delete(token);
-      }
-    }
+    // Pulisci token scaduti (SQL diretto)
+    await prisma.$executeRawUnsafe(
+      'DELETE FROM "PasswordResetToken" WHERE "expiresAt" < NOW()'
+    );
 
     // Invia email con link reset
     const emailSent = await sendPasswordResetEmail(email, resetToken);
@@ -69,9 +72,14 @@ export async function GET(request: NextRequest) {
     );
   }
 
-  const tokenData = resetTokens.get(token);
+  const rows: any[] = await prisma.$queryRawUnsafe(
+    'SELECT email, "expiresAt" FROM "PasswordResetToken" WHERE token = $1 LIMIT 1',
+    token
+  );
 
-  if (!tokenData || tokenData.expires < new Date()) {
+  const tokenRow = rows[0];
+
+  if (!tokenRow || new Date(tokenRow.expiresAt) < new Date()) {
     return NextResponse.json(
       { message: 'Token non valido o scaduto' },
       { status: 400 }
@@ -79,7 +87,7 @@ export async function GET(request: NextRequest) {
   }
 
   return NextResponse.json(
-    { email: tokenData.email },
+    { email: tokenRow.email },
     { status: 200 }
   );
 }

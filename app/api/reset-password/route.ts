@@ -6,9 +6,6 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-// Database temporaneo per token - in produzione usare tabella dedicata
-const resetTokens = new Map<string, { email: string; expires: Date }>();
-
 export async function POST(request: NextRequest) {
   try {
     const { token, password } = await request.json();
@@ -20,9 +17,15 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Verifica token
-    const tokenData = resetTokens.get(token);
-    if (!tokenData || tokenData.expires < new Date()) {
+    // Verifica token in database (SQL diretto)
+    const rows: any[] = await prisma.$queryRawUnsafe(
+      'SELECT email, "expiresAt" FROM "PasswordResetToken" WHERE token = $1 LIMIT 1',
+      token
+    );
+
+    const tokenRow = rows[0];
+
+    if (!tokenRow || new Date(tokenRow.expiresAt) < new Date()) {
       return NextResponse.json(
         { message: 'Token non valido o scaduto' },
         { status: 400 }
@@ -31,18 +34,18 @@ export async function POST(request: NextRequest) {
 
     // Aggiorna password utente
     const hashedPassword = await bcrypt.hash(password, 10);
-    
-    // In produzione: update utente nel database
-    // await prisma.user.update({
-    //   where: { email: tokenData.email },
-    //   data: { password: hashedPassword }
-    // });
 
-    // Per ora solo log
-    console.log(`Password aggiornata per: ${tokenData.email}`);
+    // Aggiorna utente nel database
+    await prisma.user.update({
+      where: { email: tokenRow.email },
+      data: { passwordHash: hashedPassword },
+    });
 
-    // Rimuovi token usato
-    resetTokens.delete(token);
+    // Rimuovi token usato (SQL diretto)
+    await prisma.$executeRawUnsafe(
+      'DELETE FROM "PasswordResetToken" WHERE token = $1',
+      token
+    );
 
     return NextResponse.json(
       { message: 'Password aggiornata con successo' },
@@ -72,9 +75,14 @@ export async function GET(request: NextRequest) {
     );
   }
 
-  const tokenData = resetTokens.get(token);
+  const rows: any[] = await prisma.$queryRawUnsafe(
+    'SELECT email, "expiresAt" FROM "PasswordResetToken" WHERE token = $1 LIMIT 1',
+    token
+  );
 
-  if (!tokenData || tokenData.expires < new Date()) {
+  const tokenRow = rows[0];
+
+  if (!tokenRow || new Date(tokenRow.expiresAt) < new Date()) {
     return NextResponse.json(
       { message: 'Token non valido o scaduto' },
       { status: 400 }
@@ -82,7 +90,7 @@ export async function GET(request: NextRequest) {
   }
 
   return NextResponse.json(
-    { email: tokenData.email },
+    { email: tokenRow.email },
     { status: 200 }
   );
 }

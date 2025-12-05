@@ -212,10 +212,7 @@ function LoginPageInner() {
                   type="button"
                   className="btn btn-link p-0 m-0"
                   style={{ fontSize: '14px', color: 'var(--vel-primary)', textDecoration: 'none' }}
-                  onClick={() =>
-                    (window.location.href =
-                      'mailto:info@centroesteticovalentina.it?subject=Recupero%20password&body=Scrivici l\'indirizzo email con cui ti sei registrato, ti aiuteremo a reimpostare la password.')
-                  }
+                  onClick={() => router.push('/forgot-password')}
                 >
                   Password dimenticata?
                 </button>
