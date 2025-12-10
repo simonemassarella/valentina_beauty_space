@@ -29,7 +29,7 @@ export default function PackagesSection() {
               <li>Cura di mani, piedi e dettagli di bellezza</li>
             </ul>
             <div className="mt-auto d-flex justify-content-between align-items-center">
-              <span className="fw-semibold text-primary home-package-duration">Da 60&apos;</span>
+              {/* <span className="fw-semibold text-primary home-package-duration">Da 60&apos;</span> */}
               <Link href="/services" className="btn btn-outline-primary btn-sm">
                 Scopri i dettagli
               </Link>
@@ -54,7 +54,7 @@ export default function PackagesSection() {
               <li>Ideale per ritrovare leggerezza ed energia</li>
             </ul>
             <div className="mt-auto d-flex justify-content-between align-items-center">
-              <span className="fw-semibold text-primary home-package-duration">Da 45&apos;</span>
+              {/* <span className="fw-semibold text-primary home-package-duration">Da 45&apos;</span> */}
               <Link href="/bookings" className="btn btn-primary btn-sm">
                 Prenota un trattamento
               </Link>
@@ -79,7 +79,7 @@ export default function PackagesSection() {
               <li>Consulenza per costruire il tuo percorso ideale</li>
             </ul>
             <div className="mt-auto d-flex justify-content-between align-items-center">
-              <span className="fw-semibold text-primary home-package-duration">Da 90&apos;</span>
+              {/* <span className="fw-semibold text-primary home-package-duration">Da 90&apos;</span> */}
               <Link href="/services" className="btn btn-outline-primary btn-sm">
                 Vedi tutti i percorsi
               </Link>

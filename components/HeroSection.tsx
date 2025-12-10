@@ -16,53 +16,48 @@ export default function HeroSection() {
         <div className="hero-section-background-overlay" />
       </div>
 
-      <div className="container hero-section-inner">
-        <div className="row justify-content-center">
-          <div className="col-12 col-lg-8">
-            <h1 className="hero-section-title mb-4">Prenota il tuo momento di Relax</h1>
+      <div className="hero-section-inner hero-section-content">
+        <div className="hero-section-content-wrapper">
+          <h1 className="hero-section-title">
+            Prenota il tuo <span className="hero-title-highlight">momento di Relax</span>
+          </h1>
 
-            <div className="hero-section-text mb-4">
-              <p className="hero-section-text-muted text-xl mb-1">
-                Prenota online in pochi istanti e lasciati guidare dalle nostre operatrici.
-              </p>
-              <p className="hero-section-text-muted mb-0">
-                Un luogo intimo e accogliente dove ritrovare equilibrio, luce e benessere.
-              </p>
-            </div>
+          <div className="hero-section-text">
+            <p className="hero-section-subtitle">
+              Prenota online in pochi istanti e lasciati guidare dalle nostre operatrici.
+            </p>
+            <p className="hero-section-subtitle">
+              Un luogo intimo e accogliente dove ritrovare equilibrio, luce e benessere.
+            </p>
+          </div>
 
-            <div className="hero-section-actions d-flex flex-wrap align-items-center gap-3 mb-5">
-              <Link href="/bookings" className="btn hero-btn-primary hero-cta-btn">
-                <span>Prenota ora</span>
-                <span className="hero-btn-icon" aria-hidden="true">
-                  →
-                </span>
-              </Link>
-              <Link href="/services" className="btn hero-btn-secondary hero-cta-btn">
-                <span>Scopri i nostri servizi</span>
-                <span className="hero-btn-icon" aria-hidden="true">
-                  →
-                </span>
-              </Link>
-            </div>
-
-            <div className="hero-section-brands d-flex flex-wrap align-items-center gap-4">
-              <Image
-                src="/endospheres-logo.svg"
-                alt="Logo Endospheres"
-                width={160}
-                height={46}
-                className="hero-brand-logo"
-              />
-              <Image
-                src="/pagodil-logo.svg"
-                alt="Logo PagoDIL"
-                width={150}
-                height={46}
-                className="hero-brand-logo"
-              />
-            </div>
+          <div className="hero-section-actions">
+            <Link href="/bookings" className="btn btn-light btn-lg">
+              <span>Prenota ora</span>
+              <span className="hero-btn-icon" aria-hidden="true">→</span>
+            </Link>
+            <Link href="/services" className="btn btn-outline-light btn-lg">
+              <span>Scopri i nostri servizi</span>
+            </Link>
           </div>
         </div>
+      </div>
+
+      <div className="hero-brands-bar">
+        <Image
+          src="/endospheres-logo.svg"
+          alt="Logo Endospheres"
+          width={126}
+          height={59}
+          className="hero-brand-logo"
+        />
+        <Image
+          src="/pagodil-logo.svg"
+          alt="Logo PagoDIL"
+          width={112}
+          height={58}
+          className="hero-brand-logo"
+        />
       </div>
     </section>
   );

@@ -55,7 +55,7 @@ export default function Navbar() {
   const navbarVariantClass = isAdmin
     ? ''
     : isHome
-    ? isScrolled
+    ? (isScrolled || expanded)
       ? 'main-navbar-scrolled'
       : 'main-navbar-home'
     : 'main-navbar-scrolled';
@@ -131,9 +131,8 @@ export default function Navbar() {
             ) : (
               <>
                 <li className="nav-item">
-                  <Link href="/bookings" className="hero-btn-primary text-decoration-none">
-                    <span>Prenota ora</span>
-                    <span className="hero-btn-icon" aria-hidden="true">→</span>
+                  <Link href="/bookings" className="btn btn-light btn-sm">
+                    Prenota ora
                   </Link>
                 </li>
               </>

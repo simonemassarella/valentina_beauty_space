@@ -1,6 +1,6 @@
 export default function TestimonialsContactsSection() {
   return (
-    <section className="home-section home-section-muted home-section-full reveal-on-scroll">
+    <section className="home-section stats-section home-section-full reveal-on-scroll">
       <div className="container">
         <div className="row g-4 align-items-stretch">
         <div className="col-lg-6">

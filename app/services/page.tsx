@@ -428,10 +428,7 @@ export default function ServicesPage() {
           </div>
           <div className="col-lg-4">
             <div className="services-cta-buttons d-flex flex-wrap justify-content-lg-end gap-2">
-              <Link href="/bookings" className="btn btn-light btn-sm">
-                Prenota un trattamento
-              </Link>
-              <Link href="/bookings" className="btn btn-outline-light btn-sm">
+              <Link href="/bookings" className="btn btn-light">
                 Prenota un trattamento
               </Link>
             </div>

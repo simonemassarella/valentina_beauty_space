@@ -20,8 +20,8 @@ export default function WhyChooseSection() {
             <Image
               src="/feature-1.svg"
               alt="Illustrazione professionale e ascolto"
-              width={120}
-              height={140}
+              width={140}
+              height={150}
               className="mb-3"
             />
             <h3 className="h5 mb-2 text-primary">Professionalità e ascolto</h3>
