@@ -16,8 +16,16 @@ export default function PackagesSection() {
             className="card card-soft home-package-card h-100 reveal-on-scroll"
             data-reveal-order="2"
           >
+            <div className="home-package-media" aria-hidden="true">
+              <img
+                src="/trattamenti-estetici.jpg"
+                alt=""
+                className="card-img-top"
+                loading="lazy"
+              />
+            </div>
             <div className="mb-2">
-              <span className="home-package-tag">Trattamenti estetici</span>
+              {/* <span className="home-package-tag">Trattamenti estetici</span> */}
             </div>
             <h3 className="h5 mb-2">Trattamenti estetici</h3>
             <p className="text-muted small mb-3">
@@ -41,8 +49,16 @@ export default function PackagesSection() {
             className="card card-soft home-package-card home-package-card-dark h-100 reveal-on-scroll"
             data-reveal-order="3"
           >
+            <div className="home-package-media home-package-media-dark" aria-hidden="true">
+              <img
+                src="/trattamenti-olistici.jpg"
+                alt=""
+                className="card-img-top"
+                loading="lazy"
+              />
+            </div>
             <div className="mb-2">
-              <span className="home-package-tag">Trattamenti olistici</span>
+              {/* <span className="home-package-tag">Trattamenti olistici</span> */}
             </div>
             <h3 className="h5 mb-2">Trattamenti olistici</h3>
             <p className="text-muted small mb-3">
@@ -66,8 +82,16 @@ export default function PackagesSection() {
             className="card card-soft home-package-card h-100 reveal-on-scroll"
             data-reveal-order="4"
           >
+            <div className="home-package-media" aria-hidden="true">
+              <img
+                src="/pacchetti-speciali.jpg"
+                alt=""
+                className="card-img-top"
+                loading="lazy"
+              />
+            </div>
             <div className="mb-2">
-              <span className="home-package-tag">Pacchetti speciali</span>
+              {/* <span className="home-package-tag">Pacchetti speciali</span> */}
             </div>
             <h3 className="h5 mb-2">Pacchetti speciali</h3>
             <p className="text-muted small mb-3">

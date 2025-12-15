@@ -2,6 +2,8 @@
  body {
    margin: 0;
    padding: 0;
+   overflow-x: hidden;
+   overflow-x: clip;
  }
 
  :root {
@@ -45,6 +47,22 @@
    min-height: 70vh;
    padding: 3.5rem 0 2.5rem;
    animation: hero-fade-in 1.5s ease-out;
+ }
+
+ .hero-section-compact {
+  height: 50vh;
+  height: 50svh;
+  min-height: 0;
+  padding: 0;
+ }
+
+ .hero-section-compact .hero-section-content {
+  bottom: 0;
+  padding: 28px;
+ }
+
+ .hero-section-compact .hero-section-title {
+  font-size: clamp(2.1rem, 4.5vw, 56px);
  }
 
  @keyframes hero-fade-in {
@@ -121,6 +139,12 @@
    flex-direction: column;
    color: #f2f6ef;
    overflow: hidden;
+ }
+
+ .hero-section-full.hero-section-compact {
+  height: 50vh;
+  height: 50svh;
+  min-height: 0;
  }
 
  .hero-section-background {
@@ -330,6 +354,22 @@
    .hero-section-content {
      padding: 80px 24px;
      bottom: 70px;
+   }
+
+   .hero-section-compact {
+     height: 50vh;
+     height: 50svh;
+     min-height: 0;
+     padding: 0;
+   }
+
+   .hero-section-compact .hero-section-content {
+     bottom: 0;
+     padding: 20px 16px;
+   }
+
+   .hero-section-compact .hero-section-title {
+     font-size: 2.1rem;
    }
 
    .hero-section-content-wrapper {
@@ -961,10 +1001,10 @@
    padding-right: 1.5rem;
  }
 
- .home-section-alt {
-   /* background-color: var(--vel-secondary-soft); */
+ /* .home-section-alt {
+   background-color: var(--vel-secondary-soft);
    padding: 4rem 0;
- }
+ } */
 
  .home-section-muted {
    background-color: var(--vel-surface-soft);
@@ -1054,17 +1094,52 @@
  }
 
  .home-package-card {
-   padding: 1.6rem 1.5rem;
-   display: flex;
-   flex-direction: column;
-   gap: 0.6rem;
- }
+  padding: 1.6rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  overflow: hidden;
+}
 
- .home-package-card-dark {
-   background-color: var(--vel-primary);
-   color: #f7faf6;
-   border-color: rgba(255, 255, 255, 0.18);
- }
+.home-package-media {
+  position: relative;
+  height: 220px;
+  margin: -1.6rem -1.5rem 1rem;
+  border-top-left-radius: 1.1rem;
+  border-top-right-radius: 1.1rem;
+  overflow: hidden;
+}
+
+.home-package-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10, 30, 19, 0.12), rgba(10, 30, 19, 0.28));
+  pointer-events: none;
+}
+
+.home-package-media-dark::after {
+  background: linear-gradient(180deg, rgba(10, 30, 19, 0.1), rgba(10, 30, 19, 0.45));
+}
+
+.home-package-card .card-img-top {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (min-width: 992px) {
+  .home-package-media {
+    height: 240px;
+  }
+}
+
+.home-package-card-dark {
+  background-color: var(--vel-primary);
+  color: #f7faf6;
+  border-color: rgba(255, 255, 255, 0.18);
+}
 
  .home-package-card ul {
    list-style: disc;
@@ -1204,6 +1279,225 @@
    object-fit: cover;
  }
 
+ .about-hero-collage {
+   display: grid;
+   grid-template-columns: 1.2fr 0.8fr;
+   grid-template-rows: 1fr 1fr;
+   gap: 1rem;
+ }
+
+ .about-hero-collage-card {
+   border-radius: 1.4rem;
+   overflow: hidden;
+   box-shadow: 0 18px 50px rgba(33, 55, 33, 0.12);
+   background-color: var(--vel-surface);
+ }
+
+ .about-hero-collage-card img {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+   object-position: center;
+   display: block;
+ }
+
+ @media (max-width: 575.98px) {
+   .about-hero-collage-card {
+     background-color: rgba(33, 55, 33, 0.04);
+   }
+
+   .about-hero-collage-card img {
+     object-fit: contain;
+   }
+ }
+
+ .about-hero-collage-card--main {
+   grid-row: 1 / span 2;
+   height: clamp(320px, 55svh, 560px);
+ }
+
+ .about-hero-collage-card--side {
+   height: clamp(160px, 24svh, 260px);
+ }
+
+ @media (max-width: 991.98px) {
+   .about-hero-collage {
+     grid-template-columns: 1fr;
+     grid-template-rows: auto;
+   }
+
+   .about-hero-collage-card--main {
+     grid-row: auto;
+     height: clamp(260px, 42svh, 520px);
+   }
+
+   .about-hero-collage-card--side {
+     height: clamp(160px, 24svh, 240px);
+   }
+ }
+
+ .about-values-section {
+   background-color: var(--vel-secondary);
+   color: #ffffff;
+ }
+
+ .about-values-kicker {
+   color: rgba(255, 255, 255, 0.72);
+ }
+
+ .about-values-title {
+   color: #ffffff;
+   font-family: var(--font-fraunces), system-ui, sans-serif;
+ }
+
+ .about-values-subtitle {
+   max-width: 30rem;
+   color: rgba(255, 255, 255, 0.75);
+   line-height: 1.65;
+ }
+
+ .about-values-grid {
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   gap: 1rem;
+ }
+
+ .about-values-item {
+   padding: 1.25rem 1.2rem;
+   border-radius: 1.1rem;
+   border: 1px solid rgba(255, 255, 255, 0.16);
+   background-color: rgba(255, 255, 255, 0.08);
+ }
+
+ .about-values-item-title {
+   font-weight: 600;
+   margin-bottom: 0.35rem;
+ }
+
+ .about-values-item-text {
+   color: rgba(255, 255, 255, 0.72);
+   font-size: 0.92rem;
+   line-height: 1.55;
+ }
+
+ @media (max-width: 767.98px) {
+   .about-values-grid {
+     grid-template-columns: 1fr;
+   }
+ }
+
+ .about-media-card {
+   position: relative;
+   border-radius: 1.4rem;
+   overflow: hidden;
+ }
+
+ .about-media-image {
+   object-fit: cover;
+   max-height: 420px;
+ }
+
+ .about-media-card::after {
+   content: '';
+   position: absolute;
+   inset: 0;
+   background: linear-gradient(180deg, rgba(10, 30, 19, 0.08), rgba(10, 30, 19, 0.28));
+   pointer-events: none;
+ }
+
+ .about-media-play {
+   position: absolute;
+   inset: 0;
+   margin: auto;
+   width: 72px;
+   height: 72px;
+   border-radius: 999px;
+   border: 0;
+   background-color: rgba(255, 255, 255, 0.92);
+   color: var(--vel-primary);
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   font-size: 1.25rem;
+   z-index: 1;
+   box-shadow: 0 18px 40px rgba(33, 55, 33, 0.22);
+ }
+
+ .about-media-play:focus {
+   outline: 2px solid var(--vel-accent);
+   outline-offset: 4px;
+ }
+
+ .about-milestone-card {
+   padding: 1.2rem 1.15rem;
+ }
+
+ .about-milestone-year {
+   font-family: var(--font-fraunces), system-ui, sans-serif;
+   font-size: 1.35rem;
+   color: var(--vel-primary);
+   margin-bottom: 0.4rem;
+ }
+
+ .about-highlight-card {
+   overflow: hidden;
+ }
+
+ .about-highlight-media {
+   position: relative;
+   height: 100%;
+   min-height: 320px;
+ }
+
+ .about-highlight-media img {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+   display: block;
+ }
+
+ .about-form-card {
+   padding: 2rem 2rem;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   text-align: left;
+ }
+
+ @media (max-width: 767.98px) {
+   .about-form-card {
+     padding: 1.5rem 1.35rem;
+   }
+ }
+
+ .about-team-card {
+   padding: 1.3rem 1.2rem;
+   display: flex;
+   flex-direction: column;
+   gap: 0.35rem;
+ }
+
+ .about-team-avatar {
+   width: 44px;
+   height: 44px;
+   border-radius: 999px;
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   background-color: var(--vel-accent-soft);
+   color: var(--vel-secondary);
+   font-weight: 600;
+ }
+
+ .about-team-name {
+   font-weight: 600;
+   color: var(--vel-primary);
+ }
+
+ .about-team-role {
+   line-height: 1.4;
+ }
+
  .services-grid {
    margin-top: 2.5rem;
  }
@@ -1299,6 +1593,37 @@
  .services-card-media {
    position: relative;
    overflow: hidden;
+ }
+
+ .services-card-media-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10, 30, 19, 0.08), rgba(10, 30, 19, 0.72));
+  pointer-events: none;
+ }
+
+ .services-card-media-text {
+  position: absolute;
+  left: 1.25rem;
+  right: 1.25rem;
+  bottom: 1.1rem;
+  color: #ffffff;
+  pointer-events: none;
+ }
+
+ .services-card-media-kicker {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  opacity: 0.86;
+ }
+
+ .services-card-media-title {
+  font-family: var(--font-fraunces), system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 1.25rem;
+  line-height: 1.25;
+  margin-top: 0.25rem;
  }
 
  .services-card-media img {
@@ -1503,6 +1828,14 @@
    font-weight: 400;
    line-height: 24px;
    color: #212529;
+ }
+
+ .stats-card-sub {
+   font-family: var(--font-sora), system-ui, sans-serif;
+   font-size: 13px;
+   font-weight: 400;
+   line-height: 19px;
+   color: var(--vel-text-muted);
  }
 
  @media (max-width: 991.98px) {
