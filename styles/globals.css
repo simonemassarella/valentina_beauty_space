@@ -1934,28 +1934,34 @@
  }
 
  .about-hero-collage-card {
-   border-radius: 1.4rem;
-   overflow: hidden;
-   box-shadow: 0 18px 50px rgba(33, 55, 33, 0.12);
-   background-color: var(--vel-surface);
+  border-radius: 1.4rem;
+  overflow: hidden;
+  box-shadow: 0 18px 50px rgba(33, 55, 33, 0.12);
+  background-color: var(--vel-surface);
+ }
+
+ .about-hero-collage-card > span {
+  display: block;
+  height: 100%;
  }
 
  .about-hero-collage-card img {
-   width: 100%;
-   height: 100%;
-   object-fit: cover;
-   object-position: center;
-   display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
  }
 
  @media (max-width: 575.98px) {
-   .about-hero-collage-card {
-     background-color: rgba(33, 55, 33, 0.04);
-   }
+  .about-hero-collage-card {
+    background-color: rgba(33, 55, 33, 0.04);
+  }
 
-   .about-hero-collage-card img {
-     object-fit: contain;
-   }
+  .about-hero-collage-card img {
+    object-fit: cover;
+    object-position: center;
+  }
  }
 
  .about-hero-collage-card--main {
