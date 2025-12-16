@@ -437,7 +437,11 @@ function BookingsPageInner() {
 
 export default function BookingsPage() {
   return (
-    <Suspense fallback={<p className="mt-4 text-muted">Caricamento pagina prenotazioni...</p>}>
+    <Suspense
+      fallback={
+        <p className="mt-4 text-muted">Caricamento pagina prenotazioni...</p>
+      }
+    >
       <BookingsPageInner />
     </Suspense>
   );

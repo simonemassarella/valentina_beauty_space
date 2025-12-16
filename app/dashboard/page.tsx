@@ -32,18 +32,18 @@ export default async function DashboardPage() {
 
   return (
     <div className="mt-4">
-      <div className="d-flex justify-content-between align-items-center mb-3">
-        <div>
+      <div className="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-3 mb-3">
+        <div className="flex-grow-1">
           <h1 className="h3 mb-1">Area clienti</h1>
           <p className="text-muted mb-0">
             Qui trovi un riepilogo rapido dei tuoi appuntamenti e puoi gestire profilo e prenotazioni.
           </p>
         </div>
-        <div className="d-flex gap-2">
-          <Link href="/profile" className="btn btn-outline-primary btn-sm">
+        <div className="d-flex flex-column flex-sm-row gap-2 w-100 w-md-auto">
+          <Link href="/profile" className="btn btn-outline-primary btn-sm w-100 w-sm-auto">
             Modifica profilo
           </Link>
-          <Link href="/bookings" className="btn btn-primary btn-sm">
+          <Link href="/bookings" className="btn btn-primary btn-sm w-100 w-sm-auto">
             Nuova prenotazione
           </Link>
         </div>
