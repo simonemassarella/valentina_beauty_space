@@ -2117,34 +2117,6 @@
    }
  }
 
- .about-team-card {
-   padding: 1.3rem 1.2rem;
-   display: flex;
-   flex-direction: column;
-   gap: 0.35rem;
- }
-
- .about-team-avatar {
-   width: 44px;
-   height: 44px;
-   border-radius: 999px;
-   display: inline-flex;
-   align-items: center;
-   justify-content: center;
-   background-color: var(--vel-accent-soft);
-   color: var(--vel-secondary);
-   font-weight: 600;
- }
-
- .about-team-name {
-   font-weight: 600;
-   color: var(--vel-primary);
- }
-
- .about-team-role {
-   line-height: 1.4;
- }
-
  .services-grid {
    margin-top: 2.5rem;
  }
@@ -2283,6 +2255,39 @@
 
  .services-card:hover .services-card-media img {
    transform: scale(1.05);
+ }
+
+ .team-card {
+  cursor: pointer;
+ }
+
+ .team-card .services-card-media img {
+  height: 320px;
+ }
+
+ .team-card .team-card-desc {
+  margin-top: 0.65rem;
+  font-size: 0.95rem;
+  line-height: 1.35;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.22s ease, max-height 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+ }
+
+ .team-card:hover .team-card-desc,
+ .team-card:focus-within .team-card-desc {
+  opacity: 0.92;
+  max-height: 240px;
+ }
+
+ .team-card:focus {
+  outline: none;
+ }
+
+ .team-card:focus-visible {
+  outline: 3px solid rgba(217, 166, 108, 0.55);
+  outline-offset: 4px;
  }
 
  .services-card-body {

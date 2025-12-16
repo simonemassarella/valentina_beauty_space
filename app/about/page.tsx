@@ -130,7 +130,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-{/* 
+      {/* 
    <section className="home-section home-section-light reveal-on-scroll" data-reveal-order="2">
         <div className="container">
           <div className="text-center">
@@ -145,7 +145,7 @@ export default function AboutPage() {
       </section> */}
       <section className="home-section home-section-light reveal-on-scroll " data-reveal-order="4">
         <div className="container ">
-            <div className="text-center my-5">
+          <div className="text-center my-5">
             <p className="text-uppercase text-muted small mb-1 home-section-kicker">La nostra promessa</p>
             <h2 className="h3 mb-3 home-section-title">Self-care è più semplice in un luogo che ti capisce</h2>
             <p className="text-muted mb-0 home-section-subtitle mx-auto">
@@ -216,6 +216,74 @@ export default function AboutPage() {
         </div>
       </section>
 
+      <section className="home-section home-section-light reveal-on-scroll" data-reveal-order="7">
+        <div className="container">
+          <div className="row g-4 align-items-end mb-3">
+            <div className="col-lg-7">
+              <p className="text-uppercase text-muted small mb-1 home-section-kicker">Il team</p>
+              <h2 className="h3 mb-2 home-section-title">Conosci chi si prende cura di te</h2>
+              <p className="text-muted mb-0 home-section-subtitle">
+                Un piccolo team, grande attenzione: professionalità, ascolto e continuità in ogni
+                appuntamento.
+              </p>
+            </div>
+          </div>
+
+          <div className="row g-3">
+            <div className="col-12 col-md-6">
+              <div className="services-card card-soft team-card text-decoration-none h-100 d-block" tabIndex={0}>
+                <div className="services-card-media" aria-hidden="true">
+                  <Image
+                    src="/valentina.svg"
+                    alt=""
+                    width={638}
+                    height={475}
+                    className="img-fluid w-100"
+                    loading="lazy"
+                  />
+                  <div className="services-card-media-overlay" aria-hidden="true" />
+                  <div className="services-card-media-text">
+                    <div className="services-card-media-kicker">Founder</div>
+                    <div className="services-card-media-title">Valentina Gaudiano</div>
+                    <div className="team-card-desc">
+                      è una professionista del settore estetico con una solida esperienza nella cura e nel benessere
+                      della persona. Dopo un percorso di formazione continua e specializzata, ha sviluppato
+                      competenze approfondite nei trattamenti estetici, nella cura delle mani e dei piedi e nei
+                      percorsi di benessere personalizzati.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-12 col-md-6">
+              <div className="services-card card-soft team-card text-decoration-none h-100 d-block" tabIndex={0}>
+                <div className="services-card-media" aria-hidden="true">
+                  <Image
+                    src="/sabrina.svg"
+                    alt=""
+                    width={638}
+                    height={475}
+                    className="img-fluid w-100"
+                    loading="lazy"
+                  />
+                  <div className="services-card-media-overlay" aria-hidden="true" />
+                  <div className="services-card-media-text">
+                    <div className="services-card-media-kicker">Collaboratrice</div>
+                    <div className="services-card-media-title">Sabrina Muccitelli</div>
+                    <div className="team-card-desc">
+                      è una professionista del settore estetico con una solida esperienza nella cura e nel benessere
+                      della persona. Dopo un percorso di formazione continua e specializzata, ha sviluppato
+                      competenze approfondite nei trattamenti estetici, nella cura delle mani e dei piedi e nei
+                      percorsi di benessere personalizzati.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="reveal-on-scroll" data-reveal-order="6">
         <div className="container">
           <div className="row g-4 align-items-stretch">
@@ -249,52 +317,6 @@ export default function AboutPage() {
                     Guarda il listino
                   </Link>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="home-section home-section-light reveal-on-scroll" data-reveal-order="7">
-        <div className="container">
-          <div className="row g-4 align-items-end mb-3">
-            <div className="col-lg-7">
-              <p className="text-uppercase text-muted small mb-1 home-section-kicker">Il team</p>
-              <h2 className="h3 mb-2 home-section-title">Conosci chi si prende cura di te</h2>
-              <p className="text-muted mb-0 home-section-subtitle">
-                Un piccolo team, grande attenzione: professionalità, ascolto e continuità in ogni
-                appuntamento.
-              </p>
-            </div>
-          </div>
-
-          <div className="row g-3">
-            <div className="col-6 col-md-3">
-              <div className="card card-soft about-team-card h-100">
-                <div className="about-team-avatar">V</div>
-                <div className="about-team-name">Valentina</div>
-                <div className="about-team-role text-muted small">Founder &amp; Beauty specialist</div>
-              </div>
-            </div>
-            <div className="col-6 col-md-3">
-              <div className="card card-soft about-team-card h-100">
-                <div className="about-team-avatar">A</div>
-                <div className="about-team-name">Alessia</div>
-                <div className="about-team-role text-muted small">Trattamenti viso</div>
-              </div>
-            </div>
-            <div className="col-6 col-md-3">
-              <div className="card card-soft about-team-card h-100">
-                <div className="about-team-avatar">M</div>
-                <div className="about-team-name">Martina</div>
-                <div className="about-team-role text-muted small">Corpo &amp; rimodellamento</div>
-              </div>
-            </div>
-            <div className="col-6 col-md-3">
-              <div className="card card-soft about-team-card h-100">
-                <div className="about-team-avatar">S</div>
-                <div className="about-team-name">Sara</div>
-                <div className="about-team-role text-muted small">Olistica &amp; relax</div>
               </div>
             </div>
           </div>
