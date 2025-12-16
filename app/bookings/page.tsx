@@ -67,26 +67,14 @@ function BookingsPageInner() {
   const [creating, setCreating] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // Controllo autenticazione
-  if (status === 'loading') {
-    return <p className="mt-4 text-muted">Caricamento...</p>;
-  }
-  
-  if (!session) {
-    return (
-      <div className="mt-4 text-center">
-        <p className="mb-4 text-muted">Devi essere loggato per visualizzare e creare prenotazioni.</p>
-        <button 
-          onClick={() => signIn('google')}
-          className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-        >
-          Accedi con Google
-        </button>
-      </div>
-    );
-  }
+  const isAuthLoading = status === 'loading';
+  const isAuthed = Boolean(session);
 
   useEffect(() => {
+    if (!isAuthed || isAuthLoading) {
+      return;
+    }
+
     const load = async () => {
       try {
         const [sRes, oRes, bRes] = await Promise.all([
@@ -118,7 +106,7 @@ function BookingsPageInner() {
     };
 
     load();
-  }, []);
+  }, [isAuthed, isAuthLoading]);
 
   // Pre-seleziona un servizio se arriva da /services?serviceId=...
   useEffect(() => {
@@ -216,6 +204,25 @@ function BookingsPageInner() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedOperatorId, selectedServiceId, date]);
+
+  // Controllo autenticazione (dopo gli hook)
+  if (isAuthLoading) {
+    return <p className="mt-4 text-muted">Caricamento...</p>;
+  }
+
+  if (!session) {
+    return (
+      <div className="mt-4 text-center">
+        <p className="mb-4 text-muted">Devi essere loggato per visualizzare e creare prenotazioni.</p>
+        <button
+          onClick={() => signIn('google')}
+          className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+        >
+          Accedi con Google
+        </button>
+      </div>
+    );
+  }
 
   const handleCreate = async (e: FormEvent) => {
     e.preventDefault();

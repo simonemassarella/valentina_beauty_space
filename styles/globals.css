@@ -1109,6 +1109,48 @@
    transform: translateY(-1px);
  }
 
+ .main-navbar .navbar-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+ }
+
+ .main-navbar .navbar-user-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  background-color: rgba(242, 246, 239, 0.18);
+  border: 1px solid rgba(242, 246, 239, 0.28);
+  color: #ffffff;
+ }
+
+ .main-navbar .navbar-user-name {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  color: #f2f6ef;
+  max-width: 160px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+ }
+
+ .main-navbar-home .navbar-user-avatar {
+  background-color: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.22);
+  color: #ffffff;
+ }
+
+ .main-navbar-home .navbar-user-name {
+  color: #ffffff;
+ }
+
  .main-navbar-home {
    background-color: transparent !important;
    box-shadow: none;

@@ -28,6 +28,26 @@ function NavLink({ href, label, onClick, isPrimary = false }: {
   );
 }
 
+function getInitials(name?: string | null, email?: string | null) {
+  const base = (name || '').trim();
+  if (base) {
+    const parts = base.split(/\s+/).filter(Boolean);
+    const first = parts[0]?.[0] ?? '';
+    const second = parts.length > 1 ? parts[1]?.[0] ?? '' : parts[0]?.[1] ?? '';
+    return (first + second).toUpperCase() || 'U';
+  }
+
+  const mail = (email || '').trim();
+  if (mail) {
+    const local = mail.split('@')[0] ?? '';
+    const a = local[0] ?? '';
+    const b = local[1] ?? '';
+    return (a + b).toUpperCase() || 'U';
+  }
+
+  return 'U';
+}
+
 export default function Navbar() {
   const { data: session } = useSession();
   const [expanded, setExpanded] = useState(false);
@@ -54,12 +74,15 @@ export default function Navbar() {
   };
 
   const navbarVariantClass = isAdmin
-    ? ''
+    ? 'main-navbar-scrolled'
     : isHeroNavbar
     ? (isScrolled || expanded)
       ? 'main-navbar-scrolled'
       : 'main-navbar-home'
     : 'main-navbar-scrolled';
+
+  const userName = session?.user?.name?.trim() || session?.user?.email?.split('@')[0] || 'Utente';
+  const userInitials = getInitials(session?.user?.name, session?.user?.email);
 
   return (
     <nav
@@ -100,24 +123,34 @@ export default function Navbar() {
                 <NavLink href="/admin/dashboard" label="Dashboard" onClick={handleNavClick} />
                 <NavLink href="/admin/bookings" label="Prenotazioni" onClick={handleNavClick} />
                 <NavLink href="/admin/services" label="Servizi" onClick={handleNavClick} />
+                <li className="nav-item d-flex align-items-center me-3">
+                  <div className="navbar-user">
+                    <span className="navbar-user-avatar" aria-hidden="true">
+                      {userInitials}
+                    </span>
+                    <span className="navbar-user-name">{userName}</span>
+                    <span className="badge text-uppercase bg-dark text-white">ADMIN</span>
+                  </div>
+                </li>
+                <li className="nav-item">
+                  <button
+                    className="btn btn-link nav-link text-danger px-0"
+                    onClick={() => signOut({ callbackUrl: '/' })}
+                  >
+                    Esci
+                  </button>
+                </li>
               </>
             ) : session ? (
               <>
                 <NavLink href="/dashboard" label="Area Clienti" onClick={handleNavClick} />
                 <li className="nav-item d-flex align-items-center me-3">
-                  <div className="d-flex flex-column text-end">
-                    <span className="text-muted small">
-                      Ciao, {session.user?.name?.split(' ')[0] ?? 'Utente'}
+                  <div className="navbar-user">
+                    <span className="navbar-user-avatar" aria-hidden="true">
+                      {userInitials}
                     </span>
-                    <span className="small mt-1">
-                      <span
-                        className={`badge text-uppercase ${
-                          isAdmin ? 'bg-dark text-white' : 'bg-secondary-subtle text-muted border'
-                        }`}
-                      >
-                        {isAdmin ? 'ADMIN' : 'CLIENTE'}
-                      </span>
-                    </span>
+                    <span className="navbar-user-name">{userName}</span>
+                    <span className="badge text-uppercase bg-secondary-subtle text-muted border">CLIENTE</span>
                   </div>
                 </li>
                 <li className="nav-item">
