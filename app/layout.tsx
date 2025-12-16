@@ -6,6 +6,7 @@ import AuthProvider from '@/components/SessionProvider';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ScrollRevealProvider from '@/components/ScrollRevealProvider';
+import LayoutChrome from '@/components/LayoutChrome';
 
 const sora = Sora({
   subsets: ['latin'],
@@ -33,9 +34,9 @@ export default function RootLayout({
       <body className={`main-bg-gradient ${sora.className}`}>
         <AuthProvider>
           <ScrollRevealProvider>
-            <Navbar />
-            <main className="container page-animated">{children}</main>
-            <Footer />
+            <LayoutChrome navbar={<Navbar />} footer={<Footer />}>
+              {children}
+            </LayoutChrome>
           </ScrollRevealProvider>
         </AuthProvider>
       </body>

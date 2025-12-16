@@ -1,6 +1,8 @@
 'use client';
 
-import { FormEvent, Suspense, useEffect, useState } from 'react';
+import NextImage from 'next/image';
+import Link from 'next/link';
+import { FormEvent, Suspense, useState } from 'react';
 import { signIn, useSession } from 'next-auth/react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
@@ -17,9 +19,11 @@ function LoginPageInner() {
 
   if (status === 'loading') {
     return (
-      <div className="row justify-content-center mt-4">
-        <div className="col-md-6 col-lg-5">
-          <p className="text-muted">Caricamento pagina di accesso...</p>
+      <div className="auth-login-figma">
+        <div className="auth-login-figma-inner">
+          <div className="auth-login-card">
+            <p className="text-muted mb-0">Caricamento pagina di accesso...</p>
+          </div>
         </div>
       </div>
     );
@@ -27,25 +31,45 @@ function LoginPageInner() {
 
   if (status === 'authenticated') {
     return (
-      <div className="row justify-content-center mt-4">
-        <div className="col-md-6 col-lg-5">
-          <div className="card card-soft border-0 p-4 p-lg-5 bg-white">
-            <h1 className="h3 mb-3">Sei già autenticato</h1>
-            <p className="text-muted mb-4">
-              Hai già effettuato l&apos;accesso alla tua area clienti.
-            </p>
-            <button
-              type="button"
-              className="btn btn-primary w-100 mb-2"
-              onClick={() => router.push('/dashboard')}
-            >
+      <div className="auth-login-figma">
+        <div className="auth-login-figma-inner">
+          <button type="button" className="auth-login-back" onClick={() => router.back()}>
+            <span className="auth-login-back-icon" aria-hidden="true">
+              <svg width="20" height="12" viewBox="0 0 20 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M19 6H2.5"
+                  stroke="rgba(255,255,255,0.95)"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                />
+                <path
+                  d="M6 1.5L1.5 6L6 10.5"
+                  stroke="rgba(255,255,255,0.95)"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </span>
+            <span>Torna Indietro</span>
+          </button>
+
+          <NextImage
+            src="/logo-valentina.svg"
+            alt="Valentina beauty space"
+            width={320}
+            height={240}
+            priority
+            className="auth-login-logo"
+          />
+
+          <div className="auth-login-card">
+            <h1 className="h4 mb-2">Sei già autenticato</h1>
+            <p className="text-muted mb-4">Hai già effettuato l&apos;accesso alla tua area clienti.</p>
+            <button type="button" className="btn auth-login-submit w-100 mb-2" onClick={() => router.push('/dashboard')}>
               Vai alla dashboard
             </button>
-            <button
-              type="button"
-              className="btn btn-link w-100"
-              onClick={() => router.back()}
-            >
+            <button type="button" className="btn btn-outline-primary w-100" onClick={() => router.back()}>
               Torna indietro
             </button>
           </div>
@@ -74,43 +98,58 @@ function LoginPageInner() {
       return;
     }
 
-    router.push('/dashboard');
+    router.push(callbackUrl);
   };
 
   return (
-    <div className="min-vh-100 d-flex align-items-center justify-content-center" style={{ backgroundColor: '#f5f5f5' }}>
-      <div className="w-100" style={{ maxWidth: '400px', padding: '0 20px' }}>
-        <div className="card border-0 shadow-sm" style={{ borderRadius: '16px' }}>
-          <div className="card-body p-4 p-lg-5">
-            {/* Logo e titolo */}
-            <div className="text-center mb-4">
-              <div className="mb-3">
-                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="24" cy="24" r="20" fill="#808080" />
-                  <path d="M18 20L30 20M18 24L30 24M18 28L26 28" stroke="white" strokeWidth="2" strokeLinecap="round" />
-                </svg>
-              </div>
-              <h2 className="mb-0" style={{ fontSize: '24px', fontWeight: 600, color: '#1a1a1a' }}>
-                Accedi
-              </h2>
-            </div>
+    <div className="auth-login-figma">
+      <div className="auth-login-figma-inner">
+        <button
+          type="button"
+          className="auth-login-back reveal-on-scroll"
+          data-reveal-order="1"
+          onClick={() => router.back()}
+        >
+          <span className="auth-login-back-icon" aria-hidden="true">
+            <svg width="20" height="12" viewBox="0 0 20 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M19 6H2.5"
+                stroke="rgba(255,255,255,0.95)"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+              />
+              <path
+                d="M6 1.5L1.5 6L6 10.5"
+                stroke="rgba(255,255,255,0.95)"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </span>
+          <span>Torna Indietro</span>
+        </button>
 
-            {/* Bottone Google */}
-            <button
-              type="button"
-              className="btn w-100 mb-3 d-flex align-items-center justify-content-center gap-2"
-              style={{
-                backgroundColor: '#ffffff',
-                border: '1px solid #dadce0',
-                borderRadius: '8px',
-                padding: '10px 16px',
-                fontSize: '14px',
-                fontWeight: 500,
-                color: '#3c4043',
-              }}
-              onClick={() => signIn('google', { callbackUrl: '/dashboard' })}
-            >
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <NextImage
+          src="/logo-valentina.svg"
+          alt="Valentina beauty space"
+          width={320}
+          height={240}
+          priority
+          className="auth-login-logo reveal-on-scroll"
+          data-reveal-order="2"
+        />
+
+        <div className="auth-login-card reveal-on-scroll" data-reveal-order="3">
+          <h1 className="auth-login-title">Accedi</h1>
+
+          <button
+            type="button"
+            className="btn auth-login-google w-100 d-flex align-items-center justify-content-center gap-2"
+            onClick={() => signIn('google', { callbackUrl })}
+          >
+            <span className="auth-login-google-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M17.64 9.20455C17.64 8.56636 17.5827 7.95273 17.4764 7.36364H9V10.845H13.6855C13.4555 11.97 12.8236 12.9232 11.8718 13.5614V15.8195H14.8564C16.3636 14.425 17.64 12.1773 17.64 9.20455Z"
                   fill="#4285F4"
@@ -128,19 +167,17 @@ function LoginPageInner() {
                   fill="#EA4335"
                 />
               </svg>
-              Accedi con Google
-            </button>
+            </span>
+            Continua con Google
+          </button>
 
-            {/* Divisore */}
-            <div className="d-flex align-items-center mb-3">
-              <div style={{ flex: 1, height: '1px', backgroundColor: '#dadce0' }} />
-              <span className="px-3" style={{ color: '#5f6368', fontSize: '14px' }}>
-                oppure
-              </span>
-              <div style={{ flex: 1, height: '1px', backgroundColor: '#dadce0' }} />
-            </div>
+          <div className="auth-login-divider" role="separator" aria-label="Oppure">
+            <span className="auth-login-divider-line" aria-hidden="true" />
+            <span className="auth-login-or">Oppure</span>
+            <span className="auth-login-divider-line" aria-hidden="true" />
+          </div>
 
-            {/* Messaggi di stato */}
+          <form onSubmit={handleSubmit} className="auth-login-form">
             {registered && (
               <div className="alert alert-success py-2 small" role="alert">
                 Registrazione completata! Ora puoi accedere con le tue credenziali.
@@ -153,103 +190,65 @@ function LoginPageInner() {
               </div>
             )}
 
-            {/* Form di login */}
-            <form onSubmit={handleSubmit}>
-              <div className="mb-3">
+            <div className="auth-login-field">
+              <label className="auth-login-label" htmlFor="email">
+                Email
+              </label>
+              <input
+                id="email"
+                type="email"
+                className="auth-login-input"
+                placeholder="Enter your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                autoComplete="email"
+              />
+            </div>
+
+            <div className="auth-login-field">
+              <label className="auth-login-label" htmlFor="password">
+                Password
+              </label>
+              <input
+                id="password"
+                type="password"
+                className="auth-login-input"
+                placeholder="**********"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                autoComplete={rememberMe ? 'current-password' : 'off'}
+              />
+            </div>
+
+            <div className="auth-login-row">
+              <label className="auth-login-remember">
                 <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Email o nome utente"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  style={{
-                    borderRadius: '8px',
-                    border: '1px solid #dadce0',
-                    padding: '12px 16px',
-                    fontSize: '14px',
-                  }}
+                  className="auth-login-checkbox"
+                  type="checkbox"
+                  checked={rememberMe}
+                  onChange={(e) => setRememberMe(e.target.checked)}
                 />
-              </div>
+                <span>Ricorda</span>
+              </label>
 
-              <div className="mb-1">
-                <input
-                  type="password"
-                  className="form-control"
-                  placeholder="Password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                  style={{
-                    borderRadius: '8px',
-                    border: '1px solid #dadce0',
-                    padding: '12px 16px',
-                    fontSize: '14px',
-                  }}
-                />
-              </div>
+              <Link href="/forgot-password" className="auth-login-forgot">
+                Password dimenticata?
+              </Link>
+            </div>
 
-              <div className="d-flex justify-content-between align-items-center mb-3">
-                <div className="form-check">
-                  <input
-                    className="form-check-input"
-                    type="checkbox"
-                    id="rememberMe"
-                    checked={rememberMe}
-                    onChange={(e) => setRememberMe(e.target.checked)}
-                    style={{ borderRadius: '4px' }}
-                  />
-                  <label
-                    className="form-check-label"
-                    htmlFor="rememberMe"
-                    style={{ fontSize: '14px', color: '#5f6368' }}
-                  >
-                    Ricordami per 30 giorni
-                  </label>
-                </div>
+            <button type="submit" className="btn auth-login-submit w-100" disabled={loading}>
+              {loading ? 'Accesso in corso...' : 'Accedi'}
+            </button>
+          </form>
 
-                <button
-                  type="button"
-                  className="btn btn-link p-0 m-0"
-                  style={{ fontSize: '14px', color: 'var(--vel-primary)', textDecoration: 'none' }}
-                  onClick={() => router.push('/forgot-password')}
-                >
-                  Password dimenticata?
-                </button>
-              </div>
-
-              <button
-                type="submit"
-                className="btn w-100"
-                disabled={loading}
-                style={{
-                  backgroundColor: 'var(--vel-primary)',
-                  border: '1px solid var(--vel-primary)',
-                  borderRadius: '8px',
-                  padding: '12px 24px',
-                  fontSize: '14px',
-                  fontWeight: 500,
-                  color: '#ffffff',
-                  boxShadow: '0 14px 32px rgba(0, 0, 0, 0.16)',
-                }}
-              >
-                {loading ? 'Accesso in corso...' : 'Accedi'}
-              </button>
-            </form>
+          <div className="auth-login-register">
+            <span className="auth-login-register-muted">Non hai un account?</span>{' '}
+            <Link href="/register" className="auth-login-register-link">
+              Registrati
+            </Link>
           </div>
-        </div>
-
-        {/* Create Account Link */}
-        <div className="text-center mt-3">
-          <span style={{ fontSize: '14px', color: '#5f6368' }}>Don't have an account? </span>
-          <button 
-            type="button" 
-            className="btn btn-link p-0 m-0" 
-            style={{ fontSize: '14px', color: '#1a73e8', textDecoration: 'none' }}
-            onClick={() => router.push('/register')}
-          >
-            Create account
-          </button>
         </div>
       </div>
     </div>

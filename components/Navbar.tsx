@@ -35,6 +35,7 @@ export default function Navbar() {
   const isAdmin = (session?.user as any)?.role === 'ADMIN';
   const pathname = usePathname();
   const isHome = pathname === '/';
+  const isHeroNavbar = isHome || pathname === '/esperienze';
 
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -54,7 +55,7 @@ export default function Navbar() {
 
   const navbarVariantClass = isAdmin
     ? ''
-    : isHome
+    : isHeroNavbar
     ? (isScrolled || expanded)
       ? 'main-navbar-scrolled'
       : 'main-navbar-home'
