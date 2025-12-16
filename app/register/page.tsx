@@ -1,5 +1,7 @@
 'use client';
 
+import NextImage from 'next/image';
+import Link from 'next/link';
 import { FormEvent, Suspense, useState } from 'react';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
@@ -52,30 +54,54 @@ function RegisterPageInner() {
   };
 
   return (
-    <div className="container mt-4">
-      <div className="row justify-content-center">
-        <div className="col-md-6 col-lg-5">
-          <div className="card card-soft border-0 p-4 p-lg-5 bg-white">
-            <h1 className="h3 mb-3">Crea il tuo account</h1>
-            <p className="text-muted mb-4">
-              Inserisci i tuoi dati per creare l&apos;account cliente.
-            </p>
+    <div className="auth-login-figma">
+      <div className="auth-login-figma-inner">
+        <button
+          type="button"
+          className="auth-login-back reveal-on-scroll"
+          data-reveal-order="1"
+          onClick={() => router.back()}
+        >
+          <span className="auth-login-back-icon" aria-hidden="true">
+            <svg width="20" height="12" viewBox="0 0 20 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M19 6H2.5"
+                stroke="rgba(255,255,255,0.95)"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+              />
+              <path
+                d="M6 1.5L1.5 6L6 10.5"
+                stroke="rgba(255,255,255,0.95)"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </span>
+          <span>Torna Indietro</span>
+        </button>
 
-            <button
-              type="button"
-              className="btn w-100 mb-3 d-flex align-items-center justify-content-center gap-2"
-              style={{
-                backgroundColor: '#ffffff',
-                border: '1px solid #dadce0',
-                borderRadius: '8px',
-                padding: '10px 16px',
-                fontSize: '14px',
-                fontWeight: 500,
-                color: '#3c4043',
-              }}
-              onClick={() => signIn('google', { callbackUrl: '/dashboard' })}
-            >
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <NextImage
+          src="/logo-valentina.svg"
+          alt="Valentina beauty space"
+          width={320}
+          height={240}
+          priority
+          className="auth-login-logo reveal-on-scroll"
+          data-reveal-order="2"
+        />
+
+        <div className="auth-login-card reveal-on-scroll" data-reveal-order="3">
+          <h1 className="auth-login-title">Registrati</h1>
+
+          <button
+            type="button"
+            className="btn auth-login-google w-100 d-flex align-items-center justify-content-center gap-2"
+            onClick={() => signIn('google', { callbackUrl: '/dashboard' })}
+          >
+            <span className="auth-login-google-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M17.64 9.20455C17.64 8.56636 17.5827 7.95273 17.4764 7.36364H9V10.845H13.6855C13.4555 11.97 12.8236 12.9232 11.8718 13.5614V15.8195H14.8564C16.3636 14.425 17.64 12.1773 17.64 9.20455Z"
                   fill="#4285F4"
@@ -93,9 +119,17 @@ function RegisterPageInner() {
                   fill="#EA4335"
                 />
               </svg>
-              Continua con Google
-            </button>
+            </span>
+            Continua con Google
+          </button>
 
+          <div className="auth-login-divider" role="separator" aria-label="Oppure">
+            <span className="auth-login-divider-line" aria-hidden="true" />
+            <span className="auth-login-or">Oppure</span>
+            <span className="auth-login-divider-line" aria-hidden="true" />
+          </div>
+
+          <form onSubmit={handleSubmit} className="auth-login-form">
             {error && (
               <div className="alert alert-danger py-2 small" role="alert">
                 {error}
@@ -108,70 +142,79 @@ function RegisterPageInner() {
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className="mt-3">
-              <div className="mb-3">
-                <label className="form-label">Nome e cognome</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  value={nome}
-                  onChange={(e) => setNome(e.target.value)}
-                  required
-                />
-              </div>
-              <div className="mb-3">
-                <label className="form-label">Email</label>
-                <input
-                  type="email"
-                  className="form-control"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
-              </div>
-              <div className="mb-3">
-                <label className="form-label">Password</label>
-                <input
-                  type="password"
-                  className="form-control"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                />
-              </div>
-              <div className="mb-4">
-                <label className="form-label">Conferma password</label>
-                <input
-                  type="password"
-                  className="form-control"
-                  value={confermaPassword}
-                  onChange={(e) => setConfermaPassword(e.target.value)}
-                  required
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="btn btn-primary w-100"
-                disabled={loading}
-              >
-                {loading ? 'Creazione account...' : 'Crea account'}
-              </button>
-            </form>
-
-            <div className="text-center mt-3">
-              <span className="text-muted" style={{ fontSize: '14px' }}>
-                Hai già un account?{' '}
-              </span>
-              <button
-                type="button"
-                className="btn btn-link p-0 m-0"
-                style={{ fontSize: '14px' }}
-                onClick={() => router.push('/login')}
-              >
-                Accedi
-              </button>
+            <div className="auth-login-field">
+              <label className="auth-login-label" htmlFor="fullName">
+                Nome e cognome
+              </label>
+              <input
+                id="fullName"
+                type="text"
+                className="auth-login-input"
+                value={nome}
+                onChange={(e) => setNome(e.target.value)}
+                required
+                placeholder="Nome e cognome"
+              />
             </div>
+
+            <div className="auth-login-field">
+              <label className="auth-login-label" htmlFor="email">
+                Email
+              </label>
+              <input
+                id="email"
+                type="email"
+                className="auth-login-input"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                placeholder="Enter your email"
+                autoComplete="email"
+              />
+            </div>
+
+            <div className="auth-login-field">
+              <label className="auth-login-label" htmlFor="password">
+                Password
+              </label>
+              <input
+                id="password"
+                type="password"
+                className="auth-login-input"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                placeholder="**********"
+                autoComplete="new-password"
+              />
+            </div>
+
+            <div className="auth-login-field">
+              <label className="auth-login-label" htmlFor="confirmPassword">
+                Conferma password
+              </label>
+              <input
+                id="confirmPassword"
+                type="password"
+                className="auth-login-input"
+                value={confermaPassword}
+                onChange={(e) => setConfermaPassword(e.target.value)}
+                required
+                placeholder="**********"
+                autoComplete="new-password"
+              />
+            </div>
+
+            <button type="submit" className="btn auth-login-submit w-100" disabled={loading}>
+              {loading ? 'Creazione account...' : 'Crea account'}
+            </button>
+          </form>
+
+          <div className="auth-login-register">
+            <span className="auth-login-register-muted">Hai già un account?</span>{' '}
+            <Link href="/login" className="auth-login-register-link">
+              Accedi
+            </Link>
           </div>
         </div>
       </div>

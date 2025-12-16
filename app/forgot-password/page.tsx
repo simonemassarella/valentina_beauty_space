@@ -1,5 +1,7 @@
 'use client';
 
+import NextImage from 'next/image';
+import Link from 'next/link';
 import { FormEvent, Suspense, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
@@ -43,38 +45,64 @@ function ForgotPasswordPageInner() {
 
   if (success) {
     return (
-      <div className="row justify-content-center mt-4">
-        <div className="col-md-6 col-lg-5">
-          <div className="card card-soft border-0 p-4 p-lg-5 bg-white">
-            <div className="text-center mb-4">
-              <div className="text-success mb-3">
-                <svg width="64" height="64" fill="currentColor" viewBox="0 0 16 16">
-                  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
-                </svg>
-              </div>
-              <h1 className="h3 mb-3">Email inviata!</h1>
-              <p className="text-muted mb-4">
-                Abbiamo inviato un'email a <strong>{email}</strong> con le istruzioni per recuperare la tua password.
-              </p>
-              <p className="text-muted small">
-                Controlla anche la cartella spam se non ricevi l'email entro pochi minuti.
-              </p>
-            </div>
-            <div className="d-flex flex-column gap-2">
-              <button
-                type="button"
-                className="btn btn-primary"
-                onClick={() => router.push('/login')}
-              >
+      <div className="auth-login-figma">
+        <div className="auth-login-figma-inner">
+          <button
+            type="button"
+            className="auth-login-back reveal-on-scroll"
+            data-reveal-order="1"
+            onClick={() => router.back()}
+          >
+            <span className="auth-login-back-icon" aria-hidden="true">
+              <svg width="20" height="12" viewBox="0 0 20 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M19 6H2.5"
+                  stroke="rgba(255,255,255,0.95)"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                />
+                <path
+                  d="M6 1.5L1.5 6L6 10.5"
+                  stroke="rgba(255,255,255,0.95)"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </span>
+            <span>Torna Indietro</span>
+          </button>
+
+          <NextImage
+            src="/logo-valentina.svg"
+            alt="Valentina beauty space"
+            width={320}
+            height={240}
+            priority
+            className="auth-login-logo reveal-on-scroll"
+            data-reveal-order="2"
+          />
+
+          <div className="auth-login-card reveal-on-scroll" data-reveal-order="3">
+            <h1 className="auth-login-title">Email inviata</h1>
+
+            <p className="auth-login-helper text-center mb-0">
+              Abbiamo inviato un&apos;email a <strong>{email}</strong> con le istruzioni per recuperare la tua password.
+            </p>
+
+            <div className="auth-login-form">
+              <button type="button" className="btn auth-login-submit w-100" onClick={() => router.push('/login')}>
                 Torna al login
               </button>
-              <button
-                type="button"
-                className="btn btn-link"
-                onClick={() => setSuccess(false)}
-              >
-                Invia un'altra email
+              <button type="button" className="btn auth-login-google w-100" onClick={() => setSuccess(false)}>
+                Invia un&apos;altra email
               </button>
+            </div>
+
+            <div className="auth-login-register">
+              <Link href="/login" className="auth-login-register-link">
+                Accedi
+              </Link>
             </div>
           </div>
         </div>
@@ -83,51 +111,85 @@ function ForgotPasswordPageInner() {
   }
 
   return (
-    <div className="row justify-content-center mt-4">
-      <div className="col-md-6 col-lg-5">
-        <div className="card card-soft border-0 p-4 p-lg-5 bg-white">
-          <h1 className="h3 mb-3">Password dimenticata?</h1>
-          <p className="text-muted mb-4">
+    <div className="auth-login-figma">
+      <div className="auth-login-figma-inner">
+        <button
+          type="button"
+          className="auth-login-back reveal-on-scroll"
+          data-reveal-order="1"
+          onClick={() => router.back()}
+        >
+          <span className="auth-login-back-icon" aria-hidden="true">
+            <svg width="20" height="12" viewBox="0 0 20 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M19 6H2.5"
+                stroke="rgba(255,255,255,0.95)"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+              />
+              <path
+                d="M6 1.5L1.5 6L6 10.5"
+                stroke="rgba(255,255,255,0.95)"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </span>
+          <span>Torna Indietro</span>
+        </button>
+
+        <NextImage
+          src="/logo-valentina.svg"
+          alt="Valentina beauty space"
+          width={320}
+          height={240}
+          priority
+          className="auth-login-logo reveal-on-scroll"
+          data-reveal-order="2"
+        />
+
+        <div className="auth-login-card reveal-on-scroll" data-reveal-order="3">
+          <h1 className="auth-login-title">Password dimenticata</h1>
+
+          <p className="auth-login-helper text-center mb-0">
             Inserisci la tua email e ti invieremo le istruzioni per recuperare la password.
           </p>
 
-          {error && (
-            <div className="alert alert-danger py-2 small" role="alert">
-              {error}
-            </div>
-          )}
+          <form onSubmit={handleSubmit} className="auth-login-form">
+            {error && (
+              <div className="alert alert-danger py-2 small" role="alert">
+                {error}
+              </div>
+            )}
 
-          <form onSubmit={handleSubmit} className="mt-3">
-            <div className="mb-3">
-              <label htmlFor="email" className="form-label">
+            <div className="auth-login-field">
+              <label className="auth-login-label" htmlFor="email">
                 Email
               </label>
               <input
                 id="email"
                 type="email"
-                className="form-control"
+                className="auth-login-input"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 placeholder="la tua@email.com"
+                autoComplete="email"
               />
-              <div className="form-text">
-                Inserisci l'email associata al tuo account.
-              </div>
             </div>
-            <button type="submit" className="btn btn-primary w-100" disabled={loading}>
+
+            <button type="submit" className="btn auth-login-submit w-100" disabled={loading}>
               {loading ? 'Invio in corso...' : 'Invia email di recupero'}
             </button>
-            <div className="text-center mt-3">
-              <button
-                type="button"
-                className="btn btn-link btn-sm"
-                onClick={() => router.push('/login')}
-              >
-                ← Torna al login
-              </button>
-            </div>
           </form>
+
+          <div className="auth-login-register">
+            <span className="auth-login-register-muted">Ti serve il login?</span>{' '}
+            <Link href="/login" className="auth-login-register-link">
+              Accedi
+            </Link>
+          </div>
         </div>
       </div>
     </div>

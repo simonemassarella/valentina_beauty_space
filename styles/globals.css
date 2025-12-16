@@ -600,8 +600,8 @@
   background: #f2f6ef;
   border-radius: 20px;
   padding: 30px;
-  border: 0;
-  box-shadow: 0px 12px 40px rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  box-shadow: none;
   min-height: 420px;
   display: flex;
   flex-direction: column;
@@ -613,8 +613,8 @@
  }
 
  .auth-login-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0px 16px 48px rgba(0, 0, 0, 0.3);
+  transform: none;
+  box-shadow: none;
  }
 
  .auth-login-title {
@@ -625,6 +625,15 @@
   color: #101c10;
   text-align: center;
   margin: 0;
+ }
+
+ .auth-login-helper {
+  width: 100%;
+  max-width: 314px;
+  margin-inline: auto;
+  font-size: 12px;
+  color: rgba(24, 24, 24, 0.75);
+  line-height: 1.4;
  }
 
  .auth-login-google {
@@ -703,7 +712,7 @@
   padding: 0.5rem 0.9rem;
   font-size: 14px;
   color: #181818;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  box-shadow: none;
   outline: none;
   letter-spacing: 0.42px;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
@@ -715,7 +724,7 @@
 
  .auth-login-input:focus {
   border-color: rgba(0, 0, 0, 0.45);
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25), 0 0 0 0.2rem rgba(0, 0, 0, 0.12);
+  box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.12);
  }
 
  .auth-login-row {
@@ -766,7 +775,7 @@
   font-weight: 600;
   font-size: 14px;
   color: #ffffff;
-  box-shadow: 0px 4px 10px rgba(233, 68, 75, 0.25);
+  box-shadow: none;
   letter-spacing: 0.42px;
   margin-top: 0;
   transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease,
@@ -778,7 +787,7 @@
   border-color: #1b2e1b;
   color: #ffffff;
   transform: translateY(-1px);
-  box-shadow: 0px 10px 22px rgba(233, 68, 75, 0.18);
+  box-shadow: none;
  }
 
  .auth-login-submit:focus,
@@ -798,16 +807,24 @@
  .auth-login-google {
   height: 41px;
   border-radius: 12px;
-  border: 1px solid rgba(0, 0, 0, 0.25);
-  background: rgba(234, 69, 76, 0);
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  border: 1px solid #dadce0;
+  background: #ffffff;
+  box-shadow: none;
   font-weight: 600;
   font-size: 14px;
   letter-spacing: 0.42px;
+  color: #181818;
  }
 
  .auth-login-google:hover {
-  background: rgba(0, 0, 0, 0.03);
+  background: #f8f9fa;
+  border-color: #d2d6da;
+ }
+
+ .auth-login-google:focus,
+ .auth-login-google:active {
+  border-color: #c1c7cd;
+  box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.12);
  }
 
  .auth-login-register {
