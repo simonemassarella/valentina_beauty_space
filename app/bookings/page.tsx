@@ -250,7 +250,16 @@ function BookingsPageInner() {
 
     if (!res.ok) {
       const data = await res.json().catch(() => ({}));
-      setError(data.message || 'Errore nella creazione della prenotazione.');
+      const msg = data.message || '';
+      
+      // Se l'orario non è più disponibile, ricarica gli slot senza mostrare errore
+      if (msg.includes('orario di lavoro') || msg.includes('non disponibile') || msg.includes('già prenotato')) {
+        setTime('');
+        await loadSlots();
+        return;
+      }
+      
+      setError(msg || 'Errore nella creazione della prenotazione.');
       return;
     }
 
