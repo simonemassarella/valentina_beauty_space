@@ -180,17 +180,9 @@ if (!user) {
   return NextResponse.json({ message: 'Utente non trovato nel database (contatta il supporto)' }, { status: 404 });
 }
 
-  // Interpreta l'orario come Europe/Rome e salva in UTC
-  const tz = getTimezone();
-  const localDateStr = `${date}T${time}:00`;
-  
-  // Calcola l'offset tra UTC e Europe/Rome per questa data specifica
-  const tempDate = new Date(localDateStr);
-  const utcTime = new Date(tempDate.toLocaleString('en-US', { timeZone: 'UTC' }));
-  const localTime = new Date(tempDate.toLocaleString('en-US', { timeZone: tz }));
-  const tzOffset = utcTime.getTime() - localTime.getTime();
-  
-  const start = new Date(tempDate.getTime() + tzOffset);
+  // Salva l'orario come UTC diretto (09:00 input = 09:00 UTC salvato)
+  // La visualizzazione userà lo stesso approccio senza conversione timezone
+  const start = new Date(`${date}T${time}:00.000Z`);
   const end = new Date(start.getTime() + service.duration * 60 * 1000);
 
   if (Number.isNaN(start.getTime())) {
