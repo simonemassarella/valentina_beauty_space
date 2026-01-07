@@ -37,7 +37,7 @@ interface BookingSlotApi {
 
 function formatTime(dateStr: string) {
   const d = new Date(dateStr);
-  return d.toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit' });
+  return d.toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Rome' });
 }
 
 function formatDate(dateStr: string) {
@@ -46,6 +46,7 @@ function formatDate(dateStr: string) {
     weekday: 'short',
     day: '2-digit',
     month: '2-digit',
+    timeZone: 'Europe/Rome',
   });
 }
 
