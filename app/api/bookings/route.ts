@@ -72,8 +72,9 @@ export async function GET(req: Request) {
       return NextResponse.json({ message: 'Parametri mancanti' }, { status: 400 });
     }
 
-    const dayStart = new Date(`${date}T00:00:00`);
-    const dayEnd = new Date(`${date}T23:59:59.999`);
+    // Usa UTC per il range (stesso formato del salvataggio)
+    const dayStart = new Date(`${date}T00:00:00.000Z`);
+    const dayEnd = new Date(`${date}T23:59:59.999Z`);
 
     const bookings = await prisma.booking.findMany({
       where: {

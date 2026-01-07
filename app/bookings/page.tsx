@@ -164,6 +164,7 @@ function BookingsPageInner() {
       );
       const existing = (await res.json()) as BookingSlotApi[];
 
+      // Le prenotazioni sono salvate come UTC diretto (09:00 = 09:00Z)
       const bookings = existing.map((b) => ({
         start: new Date(b.start),
         end: new Date(b.end),
@@ -179,15 +180,18 @@ function BookingsPageInner() {
       for (let minutes = op.startHour * 60; minutes + serviceDuration <= op.endHour * 60; minutes += 15) {
         const h = Math.floor(minutes / 60);
         const m = minutes % 60;
-        const candidateStart = new Date(year, month - 1, day, h, m, 0, 0);
+        
+        // Crea la data candidata come UTC (stesso formato del salvataggio)
+        const hh = String(h).padStart(2, '0');
+        const mm = String(m).padStart(2, '0');
+        const candidateStart = new Date(`${date}T${hh}:${mm}:00.000Z`);
         const candidateEnd = new Date(candidateStart.getTime() + serviceDuration * 60 * 1000);
 
+        // Confronta con ora corrente (in UTC)
         if (candidateStart <= now) continue;
 
         const overlap = bookings.some((b) => b.start < candidateEnd && b.end > candidateStart);
         if (!overlap) {
-          const hh = String(h).padStart(2, '0');
-          const mm = String(m).padStart(2, '0');
           slots.push(`${hh}:${mm}`);
         }
       }
