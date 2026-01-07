@@ -18,7 +18,7 @@ export default function CtaBannerSection() {
           <Link href="/bookings" className="btn btn-primary btn-lg">
             Prenota un trattamento
           </Link>
-          <Link href="/services" className="btn btn-outline-primary btn-lg">
+          <Link href="/servizi" className="btn btn-outline-primary btn-lg">
             Scopri tutti i servizi
           </Link>
         </div>

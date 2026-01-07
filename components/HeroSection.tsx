@@ -36,7 +36,7 @@ export default function HeroSection() {
               <span>Prenota ora</span>
               <span className="hero-btn-icon" aria-hidden="true">→</span>
             </Link>
-            <Link href="/services" className="btn btn-outline-light btn-lg">
+            <Link href="/servizi" className="btn btn-outline-light btn-lg">
               <span>Scopri i nostri servizi</span>
             </Link>
           </div>

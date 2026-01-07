@@ -38,7 +38,7 @@ export default function PackagesSection() {
             </ul>
             <div className="mt-auto d-flex justify-content-between align-items-center">
               {/* <span className="fw-semibold text-primary home-package-duration">Da 60&apos;</span> */}
-              <Link href="/services" className="btn btn-outline-primary btn-sm">
+              <Link href="/servizi" className="btn btn-outline-primary btn-sm">
                 Scopri i dettagli
               </Link>
             </div>
@@ -104,7 +104,7 @@ export default function PackagesSection() {
             </ul>
             <div className="mt-auto d-flex justify-content-between align-items-center">
               {/* <span className="fw-semibold text-primary home-package-duration">Da 90&apos;</span> */}
-              <Link href="/services" className="btn btn-outline-primary btn-sm">
+              <Link href="/servizi" className="btn btn-outline-primary btn-sm">
                 Vedi tutti i percorsi
               </Link>
             </div>

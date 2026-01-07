@@ -17,6 +17,51 @@ type ServiceApi = {
   imageUrl?: string | null;
 };
 
+const EXPERIENCES = [
+  {
+    key: 'endospheres',
+    category: 'Rimodellamento',
+    name: 'Endospheres corpo',
+    imageSrc: '/endospheres-corpo.jpg',
+    imageAlt: 'Trattamento Endospheres corpo',
+  },
+  {
+    key: 'laser',
+    category: 'Epilazione',
+    name: 'Laser diodo',
+    imageSrc: '/laser-diodo.jpg',
+    imageAlt: 'Epilazione laser diodo',
+  },
+  {
+    key: 'viso',
+    category: 'Viso',
+    name: 'Percorso viso luminosità',
+    imageSrc: '/viso-luminosita.jpg',
+    imageAlt: 'Trattamento viso luminosità',
+  },
+  {
+    key: 'massaggio',
+    category: 'Massaggi',
+    name: 'Massaggio rilassante',
+    imageSrc: '/massaggio-rilassante.jpg',
+    imageAlt: 'Massaggio rilassante',
+  },
+  {
+    key: 'corpo',
+    category: 'Body care',
+    name: 'Detox body wrap',
+    imageSrc: '/detox.jpg',
+    imageAlt: 'Trattamento detox body wrap',
+  },
+  {
+    key: 'sguardo',
+    category: 'Sguardo',
+    name: 'Ciglia & sopracciglia',
+    imageSrc: '/ciglia-sopracciglia.jpg',
+    imageAlt: 'Trattamenti ciglia e sopracciglia',
+  },
+];
+
 const informazioniSalone = {
   nome: "Valentina beauty space",
   listino: "LISTINO PREZZI 2025",
@@ -38,7 +83,7 @@ function mapCategoryToTab(category?: string | null): TabKey {
   return "estetici";
 }
 
-export default function ServicesPage() {
+export default function ServiziPage() {
   const [services, setServices] = useState<ServiceApi[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -118,56 +163,86 @@ export default function ServicesPage() {
   const esteticiDonnaEntries = esteticiEntries.filter(([cat]) => cat.toUpperCase() !== "UOMO");
   const esteticiUomoEntries = esteticiEntries.filter(([cat]) => cat.toUpperCase() === "UOMO");
 
-  const featuredTitleByTab: Record<TabKey, string> = {
-    estetici: "Trattamenti estetici",
-    olistici: "Trattamenti olistici",
-    pacchetti: "Pacchetti speciali",
-  };
-
-  const heroImageFallback =
-    "https://images.pexels.com/photos/3738371/pexels-photo-3738371.jpeg?auto=compress&cs=tinysrgb&w=1200";
-
   return (
-    <div className="services-page page-animated">
-      <section className="card-soft services-hero mb-4 reveal-on-scroll" data-reveal-order="1">
-        <div className="row g-4 align-items-center">
-          <div className="col-lg-6">
-            <span className="badge badge-soft services-hero-kicker mb-3">Servizi</span>
-            <h1 className="home-section-title mb-2">
-              Trattamenti & percorsi
-              <br />
-              per il tuo benessere.
+    <div className="page-animated">
+      {/* Hero Section */}
+      <section className="hero-section hero-section-full hero-section-compact position-relative text-white reveal-on-scroll" data-reveal-order="1">
+        <div className="hero-section-background" aria-hidden="true">
+          <Image
+            src="/Background.svg"
+            alt="Sfondo con foglie verdi"
+            fill
+            priority
+            sizes="100vw"
+            className="hero-section-background-image"
+          />
+          <div className="hero-section-background-overlay" />
+        </div>
+
+        <div className="hero-section-inner hero-section-content">
+          <div className="hero-section-content-wrapper">
+            <h1 className="hero-section-title mt-5">
+              I nostri <span className="hero-title-highlight">Servizi</span>
             </h1>
-            <p className="text-muted mb-3">
-              Una selezione di trattamenti viso, corpo e massaggi olistici pensati per accompagnarti in ogni
-              momento dell&apos;anno. Prenota online o contattaci per costruire insieme un percorso su misura.
-            </p>
-            <div className="d-flex flex-wrap gap-2">
-              <Link href="/bookings" className="btn btn-primary btn-lg">
-                Prenota un trattamento
-              </Link>
-              <Link href="#note-importanti" className="btn btn-outline-primary btn-lg">
-                Vedi note importanti
-              </Link>
+
+            <div className="hero-section-text">
+              <p className="hero-section-subtitle">
+                Relax. Rigenera. Ripeti. Una selezione di trattamenti pensati per farti sentire più leggera,
+                luminosa e in equilibrio.
+              </p>
             </div>
-          </div>
-          <div className="col-lg-6">
-            <div className="services-hero-image">
-              <Image
-                src={heroImageFallback}
-                alt="Un momento di relax in un centro estetico"
-                width={900}
-                height={600}
-                className="img-fluid w-100"
-                style={{ objectFit: "cover", maxHeight: "320px" }}
-                priority
-              />
+
+            <div className="small text-white-50">
+              <Link href="/" className="text-white-50 text-decoration-none">
+                Home
+              </Link>
+              <span className="mx-2" aria-hidden="true">/</span>
+              <span>Servizi</span>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="services-grid reveal-on-scroll" data-reveal-order="2">
+      {/* Experiences Gallery */}
+      <section className="home-section home-section-light reveal-on-scroll" data-reveal-order="2">
+        <div className="container">
+          <div className="row align-items-start g-4 mb-4">
+            <div className="col-lg-6">
+              <h2 className="home-section-title mb-0">Relax. Rigenera. Ripeti.</h2>
+            </div>
+            <div className="col-lg-6">
+              <p className="home-section-subtitle text-muted mb-0">
+                Dalla skincare ai percorsi corpo e relax, le nostre esperienze sono pensate per incontrare i tuoi
+                obiettivi di bellezza e benessere.
+              </p>
+            </div>
+          </div>
+
+          <div className="row g-4">
+            {EXPERIENCES.map((exp, index) => (
+              <div className="col-md-6 col-lg-4" key={exp.key}>
+                <Link
+                  href="#listino"
+                  className="services-card card-soft text-decoration-none h-100 d-block reveal-on-scroll"
+                  data-reveal-order={3 + index}
+                >
+                  <div className="services-card-media">
+                    <img src={exp.imageSrc} alt={exp.imageAlt} loading="lazy" />
+                    <div className="services-card-media-overlay" aria-hidden="true" />
+                    <div className="services-card-media-text">
+                      <div className="services-card-media-kicker">{exp.category}</div>
+                      <div className="services-card-media-title">{exp.name}</div>
+                    </div>
+                  </div>
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Price List Section */}
+      <section id="listino" className="services-grid reveal-on-scroll" data-reveal-order="9">
         <div className="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3 mb-3">
           <div className="services-grid-intro">
             <h2 className="h4 mb-1">{informazioniSalone.listino}</h2>
@@ -414,10 +489,8 @@ export default function ServicesPage() {
         )}
       </section>
 
-      <section
-        className="card-soft services-cta-banner mt-5 mb-4 reveal-on-scroll"
-        data-reveal-order="3"
-      >
+      {/* CTA Banner */}
+      <section className="card-soft services-cta-banner mt-5 mb-4 reveal-on-scroll" data-reveal-order="10">
         <div className="row align-items-center g-3">
           <div className="col-lg-8">
             <h2 className="h4 mb-2">Pronta a riconnetterti con te stessa?</h2>
@@ -429,14 +502,15 @@ export default function ServicesPage() {
           <div className="col-lg-4">
             <div className="services-cta-buttons d-flex flex-wrap justify-content-lg-end gap-2">
               <Link href="/bookings" className="btn btn-light">
-                Prenota un trattamento
+                Prenota ora
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="note-importanti" className="mt-5 reveal-on-scroll" data-reveal-order="4">
+      {/* Note importanti */}
+      <section id="note-importanti" className="mt-5 reveal-on-scroll" data-reveal-order="11">
         <div className="card card-soft border-0 p-3 bg-white">
           <h2 className="h6 mb-2">Note importanti</h2>
           <ul className="small mb-0">

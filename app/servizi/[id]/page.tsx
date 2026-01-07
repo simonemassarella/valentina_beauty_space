@@ -18,7 +18,7 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
 
   const heroImage =
     service.imageUrl ||
-    'https://images.pexels.com/photos/3738371/pexels-photo-3738371.jpeg?auto=compress&cs=tinysrgb&w=1200';
+    'https://images.pexels.com/photos/3757952/pexels-photo-3757952.jpeg?auto=compress&cs=tinysrgb&w=1200';
 
   const categoryLabel = service.category || 'Trattamento';
 
@@ -40,7 +40,7 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
             Home
           </Link>
           <span className="mx-1">/</span>
-          <Link href="/services" className="link-underline link-underline-opacity-0">
+          <Link href="/servizi" className="link-underline link-underline-opacity-0">
             Servizi
           </Link>
           <span className="mx-1">/</span>
@@ -125,7 +125,7 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
               >
                 Prenota un trattamento
               </Link>
-              <Link href="/services" className="btn btn-outline-primary w-100 btn-sm">
+              <Link href="/servizi" className="btn btn-outline-primary w-100 btn-sm">
                 Torna ai servizi
               </Link>
             </aside>
@@ -158,7 +158,7 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
                       {s.price.toFixed(2)} €
                       {s.duration ? <span className="text-muted ms-1">· {s.duration} min</span> : null}
                     </span>
-                    <Link href={`/services/${encodeURIComponent(s.id)}`} className="btn btn-outline-primary btn-sm">
+                    <Link href={`/servizi/${encodeURIComponent(s.id)}`} className="btn btn-outline-primary btn-sm">
                       Dettagli
                     </Link>
                   </div>

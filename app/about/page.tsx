@@ -12,22 +12,21 @@ export default function AboutPage() {
                 className="home-section-kicker text-uppercase text-muted mb-2 reveal-on-scroll"
                 data-reveal-order="1"
               >
-                Chi siamo
+                Chi sono
               </p>
               <h1 className="home-section-title mb-3 reveal-on-scroll" data-reveal-order="2">
-                Radicate nel benessere,
-                <br />
-                elevate dalla bellezza.
+                Mi chiamo <span className="text-primary">Valentina Gaudiano</span>
               </h1>
               <p className="home-section-subtitle text-muted mb-4 reveal-on-scroll" data-reveal-order="3">
-                Valentina beauty space è un luogo calmo, elegante e su misura: un punto d’incontro tra
-                manualità, tecnologie selezionate e una relazione di fiducia costruita nel tempo.
+                Credo profondamente che ognuno di noi sia l&apos;artefice del proprio destino e che ogni anima 
+                abbia un cammino unico, personale e autentico da seguire. Tutto ciò che nutre e cura l&apos;anima 
+                porta beneficio, perché ci riporta in armonia con la nostra vera essenza.
               </p>
               <div className="d-flex flex-wrap gap-2 reveal-on-scroll" data-reveal-order="4">
                 <Link href="/bookings" className="btn btn-primary btn-lg">
                   Prenota ora
                 </Link>
-                <Link href="/services" className="btn btn-outline-primary btn-lg">
+                <Link href="/servizi" className="btn btn-outline-primary btn-lg">
                   Scopri i servizi
                 </Link>
               </div>
@@ -83,11 +82,11 @@ export default function AboutPage() {
       <section className="stats-section reveal-on-scroll" data-reveal-order="3">
         <div className="stats-container">
           <div className="stats-text-content reveal-on-scroll" data-reveal-order="1">
-            <p className="stats-kicker">I nostri valori</p>
-            <h2 className="stats-title">La tua esperienza, al centro</h2>
+            <p className="stats-kicker">Il mio approccio</p>
+            <h2 className="stats-title">Operatrice Olistica specializzata in Shiatsu</h2>
             <p className="stats-subtitle">
-              Ogni gesto è pensato per farti sentire accolta: dal primo contatto fino al percorso più
-              strutturato.
+              Sono anche Giver di Kundalini Activation e Astral Work, pratiche profonde che accompagnano 
+              il risveglio interiore e la connessione con la parte più autentica di sé.
             </p>
           </div>
           <div className="stats-cards-wrapper">
@@ -95,36 +94,36 @@ export default function AboutPage() {
               <div className="stats-card-value">
                 <span className="stats-card-number">01</span>
               </div>
-              <div className="stats-card-label">Ascolto e personalizzazione</div>
+              <div className="stats-card-label">Corpo, mente e spirito</div>
               <div className="stats-card-sub">
-                Partiamo da un colloquio dedicato per capire esigenze, stile di vita e obiettivi.
+                Un approccio olistico che unisce tutte le dimensioni del tuo essere.
               </div>
             </div>
             <div className="stats-card reveal-on-scroll" data-reveal-order="3">
               <div className="stats-card-value">
                 <span className="stats-card-number">02</span>
               </div>
-              <div className="stats-card-label">Formazione continua</div>
+              <div className="stats-card-label">Spazio sicuro e accogliente</div>
               <div className="stats-card-sub">
-                Tecniche aggiornate e protocolli selezionati per risultati visibili e sicuri.
+                Un luogo dove esplorare il tuo potenziale e vivere esperienze di trasformazione.
               </div>
             </div>
             <div className="stats-card reveal-on-scroll" data-reveal-order="4">
               <div className="stats-card-value">
                 <span className="stats-card-number">03</span>
               </div>
-              <div className="stats-card-label">Cura dei dettagli</div>
+              <div className="stats-card-label">Crescita continua</div>
               <div className="stats-card-sub">
-                Dall’accoglienza alla cabina, ogni dettaglio è pensato per il tuo relax.
+                Siamo in costante formazione e lavoro su noi stesse, evolvendo insieme a te.
               </div>
             </div>
             <div className="stats-card reveal-on-scroll" data-reveal-order="5">
               <div className="stats-card-value">
                 <span className="stats-card-number">04</span>
               </div>
-              <div className="stats-card-label">Trasparenza e continuità</div>
+              <div className="stats-card-label">Rispetto e presenza</div>
               <div className="stats-card-sub">
-                Ti accompagniamo nel tempo con una relazione serena e una pianificazione semplice.
+                Ti accompagniamo con amore in un percorso di guarigione e crescita interiore.
               </div>
             </div>
           </div>
@@ -146,11 +145,13 @@ export default function AboutPage() {
       <section className="home-section home-section-light reveal-on-scroll " data-reveal-order="4">
         <div className="container ">
           <div className="text-center my-5">
-            <p className="text-uppercase text-muted small mb-1 home-section-kicker">La nostra promessa</p>
-            <h2 className="h3 mb-3 home-section-title">Self-care è più semplice in un luogo che ti capisce</h2>
+            <p className="text-uppercase text-muted small mb-1 home-section-kicker">Il mio spazio</p>
+            <h2 className="h3 mb-3 home-section-title">Molto più di un centro estetico</h2>
             <p className="text-muted mb-0 home-section-subtitle mx-auto">
-              Nel nostro spazio calmo e delicato, la cura diventa un rituale: pelle, mente e respiro
-              trovano un nuovo equilibrio.
+              Quello che oggi viene chiamato &quot;centro estetico&quot; per me è molto di più. 
+              È un luogo che si sta trasformando, passo dopo passo, in uno spazio sempre più personale, 
+              consapevole e olistico, dove bellezza e benessere si incontrano. 
+              Vivendo il presente, sto costruendo con amore e intenzione la mia strada.
             </p>
           </div>
           {/* <div className="text-center mb-4">
@@ -220,11 +221,12 @@ export default function AboutPage() {
         <div className="container">
           <div className="row g-4 align-items-end mb-3">
             <div className="col-lg-7">
-              <p className="text-uppercase text-muted small mb-1 home-section-kicker">Il team</p>
-              <h2 className="h3 mb-2 home-section-title">Conosci chi si prende cura di te</h2>
+              <p className="text-uppercase text-muted small mb-1 home-section-kicker">Insieme siamo una forza</p>
+              <h2 className="h3 mb-2 home-section-title">Accanto a me c&apos;è Sabrina</h2>
               <p className="text-muted mb-0 home-section-subtitle">
-                Un piccolo team, grande attenzione: professionalità, ascolto e continuità in ogni
-                appuntamento.
+                Una donna dolce, sensibile, elegante ed emotiva. Una forza silenziosa che forse ancora non riconosce 
+                pienamente, ma che io vedo ogni giorno. Mi ha accompagnata fin dai primi passi di questa espansione 
+                professionale. Le sono profondamente grata per la sua presenza costante.
               </p>
             </div>
           </div>
@@ -243,13 +245,13 @@ export default function AboutPage() {
                   />
                   <div className="services-card-media-overlay" aria-hidden="true" />
                   <div className="services-card-media-text">
-                    <div className="services-card-media-kicker">Founder</div>
+                    <div className="services-card-media-kicker">Founder &amp; Operatrice Olistica</div>
                     <div className="services-card-media-title">Valentina Gaudiano</div>
                     <div className="team-card-desc">
-                      è una professionista del settore estetico con una solida esperienza nella cura e nel benessere
-                      della persona. Dopo un percorso di formazione continua e specializzata, ha sviluppato
-                      competenze approfondite nei trattamenti estetici, nella cura delle mani e dei piedi e nei
-                      percorsi di benessere personalizzati.
+                      Operatrice Olistica specializzata in Shiatsu, Giver di Kundalini Activation e Astral Work. 
+                      Il mio approccio unisce corpo, mente e spirito, creando uno spazio sicuro e accogliente 
+                      in cui ogni persona può esplorare il proprio potenziale energetico. La cura dell&apos;anima 
+                      è fondamentale per il benessere totale.
                     </div>
                   </div>
                 </div>
@@ -268,13 +270,12 @@ export default function AboutPage() {
                   />
                   <div className="services-card-media-overlay" aria-hidden="true" />
                   <div className="services-card-media-text">
-                    <div className="services-card-media-kicker">Collaboratrice</div>
+                    <div className="services-card-media-kicker">Estetica &amp; Trattamenti</div>
                     <div className="services-card-media-title">Sabrina Muccitelli</div>
                     <div className="team-card-desc">
-                      è una professionista del settore estetico con una solida esperienza nella cura e nel benessere
-                      della persona. Dopo un percorso di formazione continua e specializzata, ha sviluppato
-                      competenze approfondite nei trattamenti estetici, nella cura delle mani e dei piedi e nei
-                      percorsi di benessere personalizzati.
+                      Sono profondamente fiera del suo percorso: ha fatto grandi passi verso sé stessa e verso 
+                      questo lavoro. Si occupa di depilazione, trattamenti laser, Endospheres Therapy, pedicure 
+                      e molto altro, portando professionalità e cura in ogni gesto.
                     </div>
                   </div>
                 </div>
@@ -313,7 +314,7 @@ export default function AboutPage() {
                   <Link href="/bookings" className="btn btn-primary">
                     Prenota una consulenza
                   </Link>
-                  <Link href="/services" className="btn btn-outline-primary">
+                  <Link href="/servizi" className="btn btn-outline-primary">
                     Guarda il listino
                   </Link>
                 </div>
@@ -337,7 +338,7 @@ export default function AboutPage() {
               <Link href="/bookings" className="btn btn-primary btn-lg">
                 Prenota ora
               </Link>
-              <Link href="/services" className="btn btn-outline-primary btn-lg">
+              <Link href="/servizi" className="btn btn-outline-primary btn-lg">
                 Vedi i trattamenti
               </Link>
             </div>

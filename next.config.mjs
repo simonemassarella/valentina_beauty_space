@@ -11,6 +11,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'www.figma.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
     ],
   },
   async rewrites() {

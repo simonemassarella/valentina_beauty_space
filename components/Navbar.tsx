@@ -55,7 +55,7 @@ export default function Navbar() {
   const isAdmin = (session?.user as any)?.role === 'ADMIN';
   const pathname = usePathname();
   const isHome = pathname === '/';
-  const isHeroNavbar = isHome || pathname === '/esperienze';
+  const isHeroNavbar = isHome || pathname === '/servizi';
 
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -114,7 +114,7 @@ export default function Navbar() {
           <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
             <NavLink href="/" label="Home" onClick={handleNavClick} />
             <NavLink href="/about" label="Chi siamo" onClick={handleNavClick} />
-            <NavLink href="/esperienze" label="Servizi" onClick={handleNavClick} />
+            <NavLink href="/servizi" label="Servizi" onClick={handleNavClick} />
           </ul>
 
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
