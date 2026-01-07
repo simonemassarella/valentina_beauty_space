@@ -32,18 +32,19 @@ model Operator {
 }
 
 model Service {
-  id        String    @id @default(cuid())
-  name      String
-  category  String?
-  description String?
-  imageUrl   String?
-  duration  Int       // minuti
-  price     Float
-  active    Boolean   @default(true)
-  bookings  Booking[]
-   operators Operator[] @relation("OperatorServices")
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
+  id             String    @id @default(cuid())
+  name           String
+  category       String?
+  description    String?
+  imageUrl       String?
+  duration       Int       // minuti
+  price          Float
+  active         Boolean   @default(true)
+  requiresMachine String?  // "ENDOSPHERES" | "LASER" | null - macchinario richiesto (uno solo disponibile)
+  bookings       Booking[]
+  operators      Operator[] @relation("OperatorServices")
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
 }
 
 model Booking {

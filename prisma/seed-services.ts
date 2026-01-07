@@ -37,7 +37,8 @@ const services = [
 
   // CORPO
   { name: 'Trattamento corpo/addome/glutei', category: 'Corpo', price: 80, duration: 60 },
-  { name: 'Endospheres (a seduta)', category: 'Corpo', price: 120, duration: 45 },
+  { name: 'Endospheres (a seduta)', category: 'Corpo', price: 120, duration: 45, requiresMachine: 'ENDOSPHERES' },
+  { name: 'Laser diodo', category: 'Epilazione', price: 50, duration: 30, requiresMachine: 'LASER' },
 
   // MASSAGGI
   { name: 'Riflessologia plantare', category: 'Massaggi', price: 40, duration: 50 },

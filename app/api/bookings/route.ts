@@ -214,6 +214,27 @@ if (!user) {
     return NextResponse.json({ message: 'Fascia oraria non disponibile' }, { status: 400 });
   }
 
+  // Verifica disponibilità macchinario (Endospheres e Laser sono unici)
+  if (service.requiresMachine) {
+    const machineConflict = await prisma.booking.findFirst({
+      where: {
+        status: 'CONFIRMED',
+        start: { lt: end },
+        end: { gt: start },
+        service: {
+          requiresMachine: service.requiresMachine,
+        },
+      },
+    });
+
+    if (machineConflict) {
+      const machineName = service.requiresMachine === 'ENDOSPHERES' ? 'Endospheres' : 'Laser';
+      return NextResponse.json({ 
+        message: `Il macchinario ${machineName} è già prenotato in questa fascia oraria` 
+      }, { status: 400 });
+    }
+  }
+
   const booking = await prisma.booking.create({
     data: {
       userId: session.user.id,
