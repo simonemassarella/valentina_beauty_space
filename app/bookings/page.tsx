@@ -158,7 +158,7 @@ function BookingsPageInner() {
       const res = await fetch(
         `/api/bookings?slots=1&operatorId=${encodeURIComponent(selectedOperatorId)}&date=${encodeURIComponent(
           date,
-        )}`,
+        )}&serviceId=${encodeURIComponent(selectedServiceId)}`,
       );
       const existing = (await res.json()) as BookingSlotApi[];
 

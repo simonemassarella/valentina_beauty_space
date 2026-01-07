@@ -67,15 +67,26 @@ export async function GET(req: Request) {
   if (url.searchParams.get('slots') === '1') {
     const operatorId = url.searchParams.get('operatorId');
     const date = url.searchParams.get('date');
+    const serviceId = url.searchParams.get('serviceId');
 
     if (!operatorId || !date) {
       return NextResponse.json({ message: 'Parametri mancanti' }, { status: 400 });
     }
 
-    const dayStart = new Date(`${date}T00:00:00`);
-    const dayEnd = new Date(`${date}T23:59:59.999`);
+    // Converti la data in range UTC considerando il timezone Europe/Rome
+    const tz = getTimezone();
+    const tempStart = new Date(`${date}T00:00:00`);
+    const tempEnd = new Date(`${date}T23:59:59.999`);
+    
+    const utcTimeStart = new Date(tempStart.toLocaleString('en-US', { timeZone: 'UTC' }));
+    const localTimeStart = new Date(tempStart.toLocaleString('en-US', { timeZone: tz }));
+    const tzOffset = utcTimeStart.getTime() - localTimeStart.getTime();
+    
+    const dayStart = new Date(tempStart.getTime() + tzOffset);
+    const dayEnd = new Date(tempEnd.getTime() + tzOffset);
 
-    const bookings = await prisma.booking.findMany({
+    // Prenotazioni dell'operatore
+    const operatorBookings = await prisma.booking.findMany({
       where: {
         operatorId,
         status: 'CONFIRMED',
@@ -85,7 +96,32 @@ export async function GET(req: Request) {
       orderBy: { start: 'asc' },
     });
 
-    return NextResponse.json(bookings);
+    // Se è specificato un servizio che richiede un macchinario, aggiungi anche le prenotazioni del macchinario
+    let machineBookings: { id: string; start: Date; end: Date }[] = [];
+    if (serviceId) {
+      const service = await prisma.service.findUnique({ where: { id: serviceId } });
+      if (service?.requiresMachine) {
+        machineBookings = await prisma.booking.findMany({
+          where: {
+            status: 'CONFIRMED',
+            start: { gte: dayStart, lte: dayEnd },
+            service: { requiresMachine: service.requiresMachine },
+            // Escludi le prenotazioni già incluse dell'operatore
+            NOT: { operatorId },
+          },
+          select: { id: true, start: true, end: true },
+          orderBy: { start: 'asc' },
+        });
+      }
+    }
+
+    // Combina e rimuovi duplicati
+    const allBookings = [...operatorBookings, ...machineBookings];
+    const uniqueBookings = allBookings.filter((b, i, arr) => 
+      arr.findIndex(x => x.id === b.id) === i
+    );
+
+    return NextResponse.json(uniqueBookings);
   }
 
   const session = await getServerSession(authOptions);
