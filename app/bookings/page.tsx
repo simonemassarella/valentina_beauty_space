@@ -158,7 +158,7 @@ function BookingsPageInner() {
       const res = await fetch(
         `/api/bookings?slots=1&operatorId=${encodeURIComponent(selectedOperatorId)}&date=${encodeURIComponent(
           date,
-        )}&serviceId=${encodeURIComponent(selectedServiceId)}`,
+        )}`,
       );
       const existing = (await res.json()) as BookingSlotApi[];
 
@@ -250,16 +250,7 @@ function BookingsPageInner() {
 
     if (!res.ok) {
       const data = await res.json().catch(() => ({}));
-      const msg = data.message || '';
-      
-      // Se l'orario non è più disponibile, ricarica gli slot senza mostrare errore
-      if (msg.includes('orario di lavoro') || msg.includes('non disponibile') || msg.includes('già prenotato')) {
-        setTime('');
-        await loadSlots();
-        return;
-      }
-      
-      setError(msg || 'Errore nella creazione della prenotazione.');
+      setError(data.message || 'Errore nella creazione della prenotazione.');
       return;
     }
 
