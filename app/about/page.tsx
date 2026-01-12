@@ -34,46 +34,15 @@ export default function AboutPage() {
             </div>
 
             <div className="col-lg-6">
-              <div className="about-hero-collage">
-                <div
-                  className="about-hero-collage-card about-hero-collage-card--main reveal-on-scroll"
-                  data-reveal-order="2"
-                >
-                  <Image
-                    src="/trattamenti-estetici.jpg"
-                    alt="Dettagli del centro e dei trattamenti"
-                    width={980}
-                    height={720}
-                    className="img-fluid w-100"
-                    priority
-                  />
-                </div>
-                <div
-                  className="about-hero-collage-card about-hero-collage-card--side reveal-on-scroll"
-                  data-reveal-order="3"
-                >
-                  <Image
-                    src="/trattamenti-olistici.jpg"
-                    alt="Ambiente rilassante e rituali di benessere"
-                    width={720}
-                    height={720}
-                    className="img-fluid w-100"
-                    priority
-                  />
-                </div>
-                <div
-                  className="about-hero-collage-card about-hero-collage-card--side reveal-on-scroll"
-                  data-reveal-order="4"
-                >
-                  <Image
-                    src="/pacchetti-speciali.jpg"
-                    alt="Pacchetti speciali e percorsi personalizzati"
-                    width={720}
-                    height={720}
-                    className="img-fluid w-100"
-                    priority
-                  />
-                </div>
+              <div className="about-hero-image reveal-on-scroll" data-reveal-order="2">
+                <Image
+                  src="/valentina-gaudiano.svg"
+                  alt="Valentina Gaudiano - Fondatrice e Operatrice Olistica"
+                  width={600}
+                  height={700}
+                  className="img-fluid w-100 rounded-4"
+                  priority
+                />
               </div>
             </div>
           </div>
@@ -222,70 +191,62 @@ export default function AboutPage() {
 
       <section className="home-section home-section-light reveal-on-scroll" data-reveal-order="7">
         <div className="container">
-          <div className="row g-4 align-items-end mb-3">
-            <div className="col-lg-10">
-              <p className="text-uppercase text-muted small mb-1 home-section-kicker">Insieme siamo una forza 💪🏽</p>
-              <h2 className="h3 mb-2 home-section-title">Accanto a me c&apos;è Sabrina</h2>
-              <p className="text-muted mb-0 home-section-subtitle">
+          <div className="row g-4 align-items-center">
+            <div className="col-lg-5 order-lg-2">
+              <div className="about-team-image reveal-on-scroll" data-reveal-order="2">
+                <Image
+                  src="/sabrina-muccitelli.svg"
+                  alt="Sabrina Muccitelli - Estetica e Trattamenti"
+                  width={500}
+                  height={600}
+                  className="img-fluid w-100 rounded-4"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+            <div className="col-lg-7 order-lg-1">
+              <div className="d-flex align-items-center gap-2 mb-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+                <p className="text-uppercase text-muted small mb-0 home-section-kicker">Insieme siamo una forza</p>
+              </div>
+              <h2 className="h3 mb-3 home-section-title">Accanto a me c&apos;è Sabrina</h2>
+              <p className="text-muted mb-3 home-section-subtitle">
                 La mia collaboratrice. Una donna dolce, sensibile, elegante ed emotiva. Una forza silenziosa che forse 
                 ancora non riconosce pienamente, ma che io vedo ogni giorno. È una persona capace, affidabile, che mi ha 
                 accompagnata fin dai primi passi di questa espansione professionale.
               </p>
-              <p className="text-muted mb-0 home-section-subtitle mt-3">
+              <p className="text-muted mb-3 home-section-subtitle">
                 Sono profondamente fiera del suo percorso: ha fatto grandi passi verso sé stessa e verso questo lavoro. 
                 Le sono grata per la sua presenza costante, per la capacità di restare anche nei miei momenti di profondo 
                 cambiamento, senza giudizio, ma con uno sguardo colmo di stima e fiducia. Crede in ciò che le trasmetto 
-                e questo, per me, è un dono immenso. Senza saperlo, mi ha aiutata a credere ancora di più in me stessa. ❤️
+                e questo, per me, è un dono immenso. Senza saperlo, mi ha aiutata a credere ancora di più in me stessa.
               </p>
-            </div>
-          </div>
-
-          <div className="row g-3">
-            <div className="col-12 col-md-6">
-              <div className="services-card card-soft team-card text-decoration-none h-100 d-block" tabIndex={0}>
-                <div className="services-card-media" aria-hidden="true">
-                  <Image
-                    src="/valentina-gaudiano.svg"
-                    alt=""
-                    width={638}
-                    height={475}
-                    className="img-fluid w-100"
-                    loading="lazy"
-                  />
-                  <div className="services-card-media-overlay" aria-hidden="true" />
-                  <div className="services-card-media-text">
-                    <div className="services-card-media-kicker">Founder &amp; Operatrice Olistica</div>
-                    <div className="services-card-media-title">Valentina Gaudiano</div>
-                    <div className="team-card-desc">
-                      Operatrice Olistica specializzata in Shiatsu, Giver di Kundalini Activation e Astral Work. 
-                      Il mio approccio unisce corpo, mente e spirito, creando uno spazio sicuro e accogliente 
-                      in cui ogni persona può esplorare il proprio potenziale energetico. La cura dell&apos;anima 
-                      è fondamentale per il benessere totale.
-                    </div>
-                  </div>
+              <div className="d-flex align-items-center gap-3 mt-4">
+                <div className="d-flex align-items-center gap-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                  </svg>
+                  <span className="small text-muted">Depilazione</span>
                 </div>
-              </div>
-            </div>
-            <div className="col-12 col-md-6">
-              <div className="services-card card-soft team-card text-decoration-none h-100 d-block" tabIndex={0}>
-                <div className="services-card-media" aria-hidden="true">
-                  <Image
-                    src="/sabrina-muccitelli.svg"
-                    alt=""
-                    width={638}
-                    height={475}
-                    className="img-fluid w-100"
-                    loading="lazy"
-                  />
-                  <div className="services-card-media-overlay" aria-hidden="true" />
-                  <div className="services-card-media-text">
-                    <div className="services-card-media-kicker">Estetica &amp; Trattamenti</div>
-                    <div className="services-card-media-title">Sabrina Muccitelli</div>
-                    <div className="team-card-desc">
-                      Si occupa della parte estetica: depilazione, trattamenti laser, Endospheres Therapy, pedicure 
-                      e molto altro, portando professionalità e cura in ogni gesto.
-                    </div>
-                  </div>
+                <div className="d-flex align-items-center gap-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                  </svg>
+                  <span className="small text-muted">Laser</span>
+                </div>
+                <div className="d-flex align-items-center gap-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                  </svg>
+                  <span className="small text-muted">Endospheres</span>
                 </div>
               </div>
             </div>
