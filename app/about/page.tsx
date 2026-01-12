@@ -19,8 +19,9 @@ export default function AboutPage() {
               </h1>
               <p className="home-section-subtitle text-muted mb-4 reveal-on-scroll" data-reveal-order="3">
                 Credo profondamente che ognuno di noi sia l&apos;artefice del proprio destino e che ogni anima 
-                abbia un cammino unico, personale e autentico da seguire. Tutto ciò che nutre e cura l&apos;anima 
-                porta beneficio, perché ci riporta in armonia con la nostra vera essenza.
+                abbia un cammino unico, personale e autentico da seguire. Non esistono scelte giuste o sbagliate 
+                in senso assoluto: esiste il proprio percorso, quello che è perfetto per sé. Tutto ciò che nutre 
+                e cura l&apos;anima porta beneficio, perché ci riporta in armonia con la nostra vera essenza.
               </p>
               <div className="d-flex flex-wrap gap-2 reveal-on-scroll" data-reveal-order="4">
                 <Link href="/bookings" className="btn btn-primary btn-lg">
@@ -86,7 +87,9 @@ export default function AboutPage() {
             <h2 className="stats-title">Operatrice Olistica specializzata in Shiatsu</h2>
             <p className="stats-subtitle">
               Sono anche Giver di Kundalini Activation e Astral Work, pratiche profonde che accompagnano 
-              il risveglio interiore e la connessione con la parte più autentica di sé.
+              il risveglio interiore e la connessione con la parte più autentica di sé. Il mio approccio 
+              unisce corpo, mente e spirito, creando uno spazio sicuro e accogliente in cui ogni persona 
+              può esplorare il proprio potenziale energetico e vivere un&apos;esperienza di trasformazione profonda.
             </p>
           </div>
           <div className="stats-cards-wrapper">
@@ -114,7 +117,7 @@ export default function AboutPage() {
               </div>
               <div className="stats-card-label">Crescita continua</div>
               <div className="stats-card-sub">
-                Siamo in costante formazione e lavoro su noi stesse, evolvendo insieme a te.
+                Sono in continua formazione e in costante lavoro su me stessa. Questo spazio cresce ed evolve insieme a me.
               </div>
             </div>
             <div className="stats-card reveal-on-scroll" data-reveal-order="5">
@@ -123,7 +126,7 @@ export default function AboutPage() {
               </div>
               <div className="stats-card-label">Rispetto e presenza</div>
               <div className="stats-card-sub">
-                Ti accompagniamo con amore in un percorso di guarigione e crescita interiore.
+                Ti accompagno con rispetto, presenza e amore in un percorso di guarigione e crescita interiore.
               </div>
             </div>
           </div>
@@ -220,13 +223,19 @@ export default function AboutPage() {
       <section className="home-section home-section-light reveal-on-scroll" data-reveal-order="7">
         <div className="container">
           <div className="row g-4 align-items-end mb-3">
-            <div className="col-lg-7">
-              <p className="text-uppercase text-muted small mb-1 home-section-kicker">Insieme siamo una forza</p>
+            <div className="col-lg-10">
+              <p className="text-uppercase text-muted small mb-1 home-section-kicker">Insieme siamo una forza 💪🏽</p>
               <h2 className="h3 mb-2 home-section-title">Accanto a me c&apos;è Sabrina</h2>
               <p className="text-muted mb-0 home-section-subtitle">
-                Una donna dolce, sensibile, elegante ed emotiva. Una forza silenziosa che forse ancora non riconosce 
-                pienamente, ma che io vedo ogni giorno. Mi ha accompagnata fin dai primi passi di questa espansione 
-                professionale. Le sono profondamente grata per la sua presenza costante.
+                La mia collaboratrice. Una donna dolce, sensibile, elegante ed emotiva. Una forza silenziosa che forse 
+                ancora non riconosce pienamente, ma che io vedo ogni giorno. È una persona capace, affidabile, che mi ha 
+                accompagnata fin dai primi passi di questa espansione professionale.
+              </p>
+              <p className="text-muted mb-0 home-section-subtitle mt-3">
+                Sono profondamente fiera del suo percorso: ha fatto grandi passi verso sé stessa e verso questo lavoro. 
+                Le sono grata per la sua presenza costante, per la capacità di restare anche nei miei momenti di profondo 
+                cambiamento, senza giudizio, ma con uno sguardo colmo di stima e fiducia. Crede in ciò che le trasmetto 
+                e questo, per me, è un dono immenso. Senza saperlo, mi ha aiutata a credere ancora di più in me stessa. ❤️
               </p>
             </div>
           </div>
@@ -273,8 +282,7 @@ export default function AboutPage() {
                     <div className="services-card-media-kicker">Estetica &amp; Trattamenti</div>
                     <div className="services-card-media-title">Sabrina Muccitelli</div>
                     <div className="team-card-desc">
-                      Sono profondamente fiera del suo percorso: ha fatto grandi passi verso sé stessa e verso 
-                      questo lavoro. Si occupa di depilazione, trattamenti laser, Endospheres Therapy, pedicure 
+                      Si occupa della parte estetica: depilazione, trattamenti laser, Endospheres Therapy, pedicure 
                       e molto altro, portando professionalità e cura in ogni gesto.
                     </div>
                   </div>
