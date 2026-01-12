@@ -236,7 +236,7 @@ export default function AboutPage() {
               <div className="services-card card-soft team-card text-decoration-none h-100 d-block" tabIndex={0}>
                 <div className="services-card-media" aria-hidden="true">
                   <Image
-                    src="/valentina.svg"
+                    src="/valentina-gaudiano.svg"
                     alt=""
                     width={638}
                     height={475}
@@ -261,7 +261,7 @@ export default function AboutPage() {
               <div className="services-card card-soft team-card text-decoration-none h-100 d-block" tabIndex={0}>
                 <div className="services-card-media" aria-hidden="true">
                   <Image
-                    src="/sabrina.svg"
+                    src="/sabrina-muccitelli.svg"
                     alt=""
                     width={638}
                     height={475}
