@@ -28,7 +28,7 @@ export default function MassaggioVisoCristalliPage() {
   return (
     <div className="page-animated">
       {/* Hero Section */}
-      <section className="home-section home-section-light reveal-on-scroll py-5" data-reveal-order="1" style={{ minHeight: '70vh', display: 'flex', alignItems: 'center' }}>
+      <section className="home-section home-section-light reveal-on-scroll py-5" data-reveal-order="1" style={{ minHeight: '80vh', display: 'flex', alignItems: 'center' }}>
         <div className="container">
           <div className="row align-items-center g-5">
             <div className="col-lg-6">
@@ -46,7 +46,7 @@ export default function MassaggioVisoCristalliPage() {
               <h1 className="home-section-title mb-4 reveal-on-scroll" data-reveal-order="2">
                 Massaggio Viso con <span className="text-primary">Cristalli</span>
               </h1>
-              <p className="home-section-subtitle text-muted mb-4 reveal-on-scroll" data-reveal-order="3" style={{ fontSize: '1.15rem', lineHeight: '1.8' }}>
+              <p className="home-section-subtitle text-muted mb-4 reveal-on-scroll" data-reveal-order="3" style={{ fontSize: '1.1rem', lineHeight: '1.8' }}>
                 Un rituale di bellezza profonda che va oltre l&apos;estetica: riequilibra corpo, mente 
                 ed emozioni attraverso il tocco delicato e la forza vibrazionale dei cristalli.
               </p>
