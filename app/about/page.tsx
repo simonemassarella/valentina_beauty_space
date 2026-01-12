@@ -146,7 +146,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="home-section home-section-light reveal-on-scroll" data-reveal-order="5">
+      {/* <section className="home-section home-section-light reveal-on-scroll" data-reveal-order="5">
         <div className="container">
           <div className="text-center mb-4">
             <p className="text-uppercase text-muted small mb-1 home-section-kicker">Il nostro percorso</p>
@@ -187,7 +187,7 @@ export default function AboutPage() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <section className="home-section home-section-light reveal-on-scroll" data-reveal-order="7">
         <div className="container">
@@ -293,7 +293,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="home-section home-section-light reveal-on-scroll" data-reveal-order="8">
+      {/* <section className="home-section home-section-light reveal-on-scroll" data-reveal-order="8">
         <div className="container">
           <div className="home-cta-banner card-soft d-flex flex-column flex-lg-row align-items-center p-4 p-lg-5">
             <div className="flex-grow-1 col-lg-6 col-md-12">
@@ -313,7 +313,7 @@ export default function AboutPage() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 }
