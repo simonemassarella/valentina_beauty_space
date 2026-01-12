@@ -4,9 +4,9 @@ import Link from 'next/link';
 export default function AboutPage() {
   return (
     <div className="page-animated">
-      <section className="home-section home-section-light reveal-on-scroll" data-reveal-order="1">
+      <section className="home-section home-section-light reveal-on-scroll py-5" data-reveal-order="1" style={{ minHeight: '80vh', display: 'flex', alignItems: 'center' }}>
         <div className="container">
-          <div className="row align-items-center g-4">
+          <div className="row align-items-center g-5">
             <div className="col-lg-6">
               <p
                 className="home-section-kicker text-uppercase text-muted mb-2 reveal-on-scroll"
@@ -14,10 +14,10 @@ export default function AboutPage() {
               >
                 Chi sono
               </p>
-              <h1 className="home-section-title mb-3 reveal-on-scroll" data-reveal-order="2">
+              <h1 className="home-section-title mb-4 reveal-on-scroll" data-reveal-order="2">
                 Mi chiamo <span className="text-primary">Valentina Gaudiano</span>
               </h1>
-              <p className="home-section-subtitle text-muted mb-4 reveal-on-scroll" data-reveal-order="3">
+              <p className="home-section-subtitle text-muted mb-4 reveal-on-scroll" data-reveal-order="3" style={{ fontSize: '1.1rem', lineHeight: '1.8' }}>
                 Credo profondamente che ognuno di noi sia l&apos;artefice del proprio destino e che ogni anima 
                 abbia un cammino unico, personale e autentico da seguire. Non esistono scelte giuste o sbagliate 
                 in senso assoluto: esiste il proprio percorso, quello che è perfetto per sé. Tutto ciò che nutre 

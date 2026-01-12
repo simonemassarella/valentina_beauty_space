@@ -187,7 +187,7 @@ export default function ServiziPage() {
 
             <div className="hero-section-text">
               <p className="hero-section-subtitle">
-                Relax. Rigenera. Ripeti. Una selezione di trattamenti pensati per farti sentire più leggera,
+                 Una selezione di trattamenti pensati per farti sentire più leggera,
                 luminosa e in equilibrio.
               </p>
             </div>
