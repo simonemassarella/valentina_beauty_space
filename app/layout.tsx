@@ -22,6 +22,11 @@ const fraunces = Fraunces({
 export const metadata: Metadata = {
   title: 'Centro Estetico Valentina',
   description: 'Prenotazioni online, area clienti e gestione admin per il centro estetico.',
+  icons: {
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
+    apple: '/favicon.svg',
+  },
 };
 
 export default function RootLayout({

@@ -130,18 +130,20 @@ export default function AboutPage() {
             <p className="text-uppercase text-muted small mb-1 home-section-kicker">Entra nel nostro spazio</p>
             <h2 className="h3 mb-0 home-section-title">Un santuario di calma</h2>
           </div> */}
-          <div className="about-media-card card-soft">
-            <Image
-              src="/Background.svg"
-              alt="Interni del centro Valentina beauty space"
-              width={1200}
-              height={700}
-              className="img-fluid w-100 about-media-image"
-              priority
+          <div>
+            <video
+              src="/video/video-massaggio.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="w-100 about-media-video"
+              style={{ 
+                borderRadius: '1rem',
+                height: '400px',
+                objectFit: 'cover'
+              }}
             />
-            <button type="button" className="about-media-play" aria-label="Riproduci video">
-              <span aria-hidden="true">▶</span>
-            </button>
           </div>
         </div>
       </section>
