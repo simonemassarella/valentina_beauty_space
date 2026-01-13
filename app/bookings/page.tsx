@@ -176,6 +176,8 @@ function BookingsPageInner() {
       const slots: string[] = [];
       const now = new Date();
       const [year, month, day] = date.split('-').map((v) => parseInt(v, 10));
+      const todayStr = now.toISOString().split('T')[0];
+      const isToday = date === todayStr;
 
       for (let minutes = op.startHour * 60; minutes + serviceDuration <= op.endHour * 60; minutes += 15) {
         const h = Math.floor(minutes / 60);
@@ -187,8 +189,14 @@ function BookingsPageInner() {
         const candidateStart = new Date(`${date}T${hh}:${mm}:00.000Z`);
         const candidateEnd = new Date(candidateStart.getTime() + serviceDuration * 60 * 1000);
 
-        // Confronta con ora corrente (in UTC)
-        if (candidateStart <= now) continue;
+        // Se è oggi, filtra gli slot già passati (confronto ora locale)
+        if (isToday) {
+          const currentHour = now.getHours();
+          const currentMinute = now.getMinutes();
+          const currentTotalMinutes = currentHour * 60 + currentMinute;
+          // Aggiungi 30 minuti di buffer per dare tempo all'utente
+          if (minutes <= currentTotalMinutes + 30) continue;
+        }
 
         const overlap = bookings.some((b) => b.start < candidateEnd && b.end > candidateStart);
         if (!overlap) {

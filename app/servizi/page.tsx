@@ -21,44 +21,50 @@ const EXPERIENCES = [
   {
     key: 'endospheres',
     category: 'Rimodellamento',
-    name: 'Endospheres corpo',
+    name: 'Endosphères Therapy',
     imageSrc: '/endospheres-corpo.jpg',
-    imageAlt: 'Trattamento Endospheres corpo',
+    imageAlt: 'Trattamento Endosphères Therapy',
+    href: '/servizi/endospheres',
   },
   {
     key: 'laser',
     category: 'Epilazione',
-    name: 'Laser diodo',
+    name: 'Laser Diodo',
     imageSrc: '/laser-diodo.jpg',
-    imageAlt: 'Epilazione laser diodo',
+    imageAlt: 'Epilazione Laser Diodo',
+    href: '/servizi/laser-diodo',
   },
   {
     key: 'viso',
     category: 'Viso',
-    name: 'Percorso viso luminosità',
+    name: 'Massaggio Viso con Cristalli',
     imageSrc: '/viso-luminosita.jpg',
-    imageAlt: 'Trattamento viso luminosità',
+    imageAlt: 'Massaggio Viso con Cristalli',
+    href: '/servizi/massaggio-viso-cristalli',
   },
   {
-    key: 'massaggio',
+    key: 'riflessologia',
+    category: 'Olistico',
+    name: 'Riflessologia Plantare',
+    imageSrc: '/trattamenti-olistici.jpg',
+    imageAlt: 'Riflessologia Plantare',
+    href: '/servizi/riflessologia-plantare',
+  },
+  {
+    key: 'decontratturante',
     category: 'Massaggi',
-    name: 'Massaggio rilassante',
+    name: 'Massaggio Decontratturante',
     imageSrc: '/massaggio-rilassante.jpg',
-    imageAlt: 'Massaggio rilassante',
+    imageAlt: 'Massaggio Decontratturante Bioenergetico',
+    href: '/servizi/massaggio-decontratturante',
   },
   {
-    key: 'corpo',
-    category: 'Body care',
-    name: 'Detox body wrap',
+    key: 'emolinfatico',
+    category: 'Detox',
+    name: 'Massaggio Emolinfatico',
     imageSrc: '/detox.jpg',
-    imageAlt: 'Trattamento detox body wrap',
-  },
-  {
-    key: 'sguardo',
-    category: 'Sguardo',
-    name: 'Ciglia & sopracciglia',
-    imageSrc: '/ciglia-sopracciglia.jpg',
-    imageAlt: 'Trattamenti ciglia e sopracciglia',
+    imageAlt: 'Massaggio Emolinfatico',
+    href: '/servizi/massaggio-emolinfatico',
   },
 ];
 
@@ -187,7 +193,7 @@ export default function ServiziPage() {
 
             <div className="hero-section-text">
               <p className="hero-section-subtitle">
-                Relax. Rigenera. Ripeti. Una selezione di trattamenti pensati per farti sentire più leggera,
+                 Una selezione di trattamenti pensati per farti sentire più leggera,
                 luminosa e in equilibrio.
               </p>
             </div>
@@ -222,7 +228,7 @@ export default function ServiziPage() {
             {EXPERIENCES.map((exp, index) => (
               <div className="col-md-6 col-lg-4" key={exp.key}>
                 <Link
-                  href="#listino"
+                  href={exp.href}
                   className="services-card card-soft text-decoration-none h-100 d-block reveal-on-scroll"
                   data-reveal-order={3 + index}
                 >
